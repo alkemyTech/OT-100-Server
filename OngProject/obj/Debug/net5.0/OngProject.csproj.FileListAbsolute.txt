@@ -27,3 +27,32 @@ C:\Users\ccaceres\Desktop\Data\No Work but Work\OT-100-Server\OngProject\obj\Deb
 C:\Users\ccaceres\Desktop\Data\No Work but Work\OT-100-Server\OngProject\obj\Debug\net5.0\ref\OngProject.dll
 C:\Users\ccaceres\Desktop\Data\No Work but Work\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.pdb
 C:\Users\ccaceres\Desktop\Data\No Work but Work\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.genruntimeconfig.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\appsettings.json
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\OngProject.exe
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\OngProject.deps.json
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\OngProject.runtimeconfig.json
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\OngProject.runtimeconfig.dev.json
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\OngProject.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\ref\OngProject.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\OngProject.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.AssemblyInfo.cs
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\staticwebassets\OngProject.StaticWebAssets.Manifest.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\staticwebassets\OngProject.StaticWebAssets.xml
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\scopedcss\bundle\OngProject.styles.css
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.RazorTargetAssemblyInfo.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.CopyComplete
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\ref\OngProject.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.genruntimeconfig.cache

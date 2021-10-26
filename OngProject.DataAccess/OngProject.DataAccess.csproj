@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
-    <Folder Include="DbContext\" />
+    <Folder Include="Configurations" />
+    <Folder Include="DbContext" />
   </ItemGroup>
 
 </Project>
