@@ -10,3 +10,6 @@ C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\D
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.dll
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\ref\OngProject.DataAccess.dll
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\bin\Debug\net5.0\OngProject.Domain.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\bin\Debug\net5.0\OngProject.Domain.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.csproj.CopyComplete
