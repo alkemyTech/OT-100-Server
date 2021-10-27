@@ -1,0 +1,12 @@
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Application.deps.json
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Application.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\ref\OngProject.Application.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Application.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.AssemblyInfo.cs
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\ref\OngProject.Application.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.pdb
