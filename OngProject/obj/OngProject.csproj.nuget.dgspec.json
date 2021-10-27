@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject\\OngProject.csproj": {}
+    "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject\\OngProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj": {
+    "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
         "projectName": "OngProject.Application",
-        "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\obj\\",
+        "projectPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,32 +66,30 @@
         }
       }
     },
-    "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
+    "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
         "projectName": "OngProject.DataAccess",
-        "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {
-                "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj"
+              "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {
+                "projectPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj"
               }
             }
           }
@@ -132,24 +128,22 @@
         }
       }
     },
-    "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {
+    "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
         "projectName": "OngProject.Domain",
-        "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\obj\\",
+        "projectPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -186,35 +180,33 @@
         }
       }
     },
-    "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject\\OngProject.csproj": {
+    "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject\\OngProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject\\OngProject.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject\\OngProject.csproj",
         "projectName": "OngProject",
-        "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject\\OngProject.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject\\obj\\",
+        "projectPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject\\OngProject.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj": {
-                "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj"
+              "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj": {
+                "projectPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj"
               },
-              "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
+              "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\PC\\Desktop\\Career\\.NET\\Alkemy\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
               }
             }
           }
