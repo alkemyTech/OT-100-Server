@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
-namespace OngProject.Domain.Dto.Organizations
+namespace OngProject.Application.Dto.Organizations
 {
     public class CreateOrganizationDto
     {
@@ -10,7 +11,7 @@ namespace OngProject.Domain.Dto.Organizations
 
         [Required]
         [DataType(DataType.Upload)]
-        public string Image { get; set; }
+        public IFormFile Image { get; set; }
 
         [StringLength(1200)]
         public string Address { get; set; }
