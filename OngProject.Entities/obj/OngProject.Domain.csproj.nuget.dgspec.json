@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {}
+    "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {
+    "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
         "projectName": "OngProject.Domain",
-        "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
-        "packagesPath": "C:\\Users\\anis_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\obj\\",
+        "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anis_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.208\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
