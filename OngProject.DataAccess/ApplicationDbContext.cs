@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,17 +23,23 @@ namespace OngProject.DataAccess
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
-            var entities = ChangeTracker.Entries()
-                .Where(e => e.State == EntityState.Deleted && e.Metadata.GetProperties()
-                    .Any(p => p.Name == "DeletedAt"))
-                .ToList();
-
-            foreach (var entity in entities)
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
-                entity.State = EntityState.Unchanged;
-                entity.CurrentValues["DeletedAt"] = DateTime.Now;
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedAt = DateTime.Now;
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.UpdatedAt = DateTime.Now;
+                        break;
+                    case EntityState.Deleted:
+                        if (entry.Entity.DeletedAt is null)
+                            entry.State = EntityState.Modified;
+                        entry.Entity.DeletedAt = DateTime.Now;
+                        break;
+                }
             }
-
             return await base.SaveChangesAsync(cancellationToken);
         }
         

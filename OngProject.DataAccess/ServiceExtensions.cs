@@ -10,7 +10,7 @@ namespace OngProject.DataAccess
             IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(ops =>
-                ops.UseSqlServer(configuration.GetConnectionString(""), m =>
+                ops.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), m =>
                     m.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             
             return services;

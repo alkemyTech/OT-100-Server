@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
-namespace OngProject.Domain.Dto.Members
+namespace OngProject.Application.DTOs.Members
 {
     public class CreateMemberDto
     {
@@ -20,9 +21,9 @@ namespace OngProject.Domain.Dto.Members
         [StringLength(120)]
         public string LinkedInUrl { get; set; }
         
-        [Required]
+        //[Required]
         [DataType(DataType.Upload)]
-        public string Image { get; set; }
+        public IFormFile Image { get; set; }
         
         [StringLength(1200)]
         public string Description { get; set; }
