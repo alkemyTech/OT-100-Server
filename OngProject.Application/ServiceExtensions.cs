@@ -1,6 +1,6 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using OngProject.Application.Services;
 
 namespace OngProject.Application
 {
@@ -9,6 +9,8 @@ namespace OngProject.Application
         public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddScoped(typeof(MemberService));
             
             return services;
         }

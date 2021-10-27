@@ -22,7 +22,7 @@ namespace OngProject
         {
             services.AddDataAccessLayer(Configuration);
             services.AddApplicationLayer();
-            
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
