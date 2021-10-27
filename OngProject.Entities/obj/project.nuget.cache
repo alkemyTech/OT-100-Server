@@ -4,5 +4,12 @@
   "success": true,
   "projectFilePath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.Entities\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

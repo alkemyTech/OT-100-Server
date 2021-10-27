@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OngProject.DataAccess.Interfaces;
 
 namespace OngProject.DataAccess
 {
@@ -12,7 +13,9 @@ namespace OngProject.DataAccess
             services.AddDbContext<ApplicationDbContext>(ops =>
                 ops.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), m =>
                     m.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-            
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             return services;
         }
     }

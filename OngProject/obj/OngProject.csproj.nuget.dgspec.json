@@ -33,7 +33,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -53,6 +57,10 @@
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
               "version": "[2.2.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.11, )"
             }
           },
           "imports": [
@@ -255,7 +263,7 @@
           "dependencies": {
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.6.3, )"
+              "version": "[6.2.3, )"
             }
           },
           "imports": [
