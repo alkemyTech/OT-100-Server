@@ -161,3 +161,13 @@ C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject\obj\Debug\net5.0\scoped
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.RazorTargetAssemblyInfo.cache
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.CopyComplete
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.genruntimeconfig.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.AssemblyReference.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.AssemblyInfoInputs.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.AssemblyInfo.cs
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.CoreCompileInputs.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.dll
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\ref\OngProject.dll
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.pdb

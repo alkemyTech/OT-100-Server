@@ -22,3 +22,15 @@ C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject.Application\obj\Debug\n
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.dll
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject.Application\obj\Debug\net5.0\ref\OngProject.Application.dll
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.pdb
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Application.deps.json
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Application.dll
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\bin\Debug\net5.0\ref\OngProject.Application.dll
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Application.pdb
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.csproj.AssemblyReference.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.AssemblyInfoInputs.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.AssemblyInfo.cs
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.csproj.CoreCompileInputs.cache
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.dll
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\ref\OngProject.Application.dll
+C:\Users\Matias\Source\Repos\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.pdb
