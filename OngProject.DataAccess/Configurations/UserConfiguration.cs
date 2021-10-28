@@ -21,7 +21,7 @@ namespace OngProject.DataAccess.Configurations
                 .HasMaxLength(60);
             builder.Property(m => m.Password)
                 .IsRequired()
-                .HasMaxLength(10);
+                .HasMaxLength(24);
             builder.Property(m => m.Photo)
                 .IsRequired()
                 .HasMaxLength(240);
