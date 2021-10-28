@@ -6,6 +6,8 @@
 # User-specific files
 *.rsuser
 *.suo
+
+.suo
 *.user
 *.userosscache
 *.sln.docstates
@@ -229,6 +231,8 @@ _pkginfo.txt
 # Visual Studio cache files
 # files ending in .cache can be ignored
 *.[Cc]ache
+*.cache
+*.editorconfig
 # but keep track of directories ending in .cache
 !?*.[Cc]ache/
 
