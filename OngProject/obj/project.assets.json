@@ -6242,28 +6242,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Matias\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Joaco Bautista\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject\\OngProject.csproj",
+      "projectUniqueName": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject\\OngProject.csproj",
       "projectName": "OngProject",
-      "projectPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject\\OngProject.csproj",
-      "packagesPath": "C:\\Users\\Matias\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject\\obj\\",
+      "projectPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject\\OngProject.csproj",
+      "packagesPath": "C:\\Users\\Joaco Bautista\\.nuget\\packages\\",
+      "outputPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Matias\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Joaco Bautista\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6276,11 +6273,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj": {
-              "projectPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj"
+            "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.Application\\OngProject.Application.csproj": {
+              "projectPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.Application\\OngProject.Application.csproj"
             },
-            "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
+            "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
+              "projectPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
             }
           }
         }
@@ -6321,13 +6318,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CBIL0+UOEb4Wwc76lN1/Zz3fFvp5i5MdEHWw33rDhO9DHjiwhTwcACEeTX7BZIVz1G1gFCytfteSvgRMSzb2VQ==",
+  "dgSpecHash": "2GULpP/JTgBl58NTlkxLvb5E/6nyXbTRT5y9Jp/JdSbO5KGksu6QUIWcEBfewm9Blb045d5vgu8G2IkzaPQxZw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
+  "projectFilePath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.Entities\\OngProject.Domain.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\Matias\\Source\\Repos\\OT-100-Server\\OngProject.Entities\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
