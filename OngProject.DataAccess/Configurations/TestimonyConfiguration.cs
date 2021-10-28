@@ -4,7 +4,7 @@ using OngProject.Domain.Entities;
 
 namespace OngProject.DataAccess.Configurations
 {
-    public class TestimonyyConfiguration : IEntityTypeConfiguration<Testimony>
+    public class TestimonyConfiguration : IEntityTypeConfiguration<Testimony>
     {
         public void Configure(EntityTypeBuilder<Testimony> builder)
         {
