@@ -4,9 +4,9 @@ using OngProject.Domain.Entities;
 
 namespace OngProject.DataAccess.Configurations
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    public class TestimonyyConfiguration : IEntityTypeConfiguration<Testimony>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<Testimony> builder)
         {
             builder.HasKey(m => m.Id);
 
@@ -14,11 +14,11 @@ namespace OngProject.DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(60);
 
-            builder.Property(m => m.Description)
-                 .HasMaxLength(1000);
-
             builder.Property(m => m.Image)
                 .HasMaxLength(240);
+
+            builder.Property(m => m.Content)
+                .HasMaxLength(1200);
 
             builder.Property(m => m.CreatedAt)
                 .HasColumnType("SMALLDATETIME");

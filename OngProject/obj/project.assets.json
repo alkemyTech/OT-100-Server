@@ -6242,24 +6242,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joaco Bautista\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\anis_\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject\\OngProject.csproj",
+      "projectUniqueName": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject\\OngProject.csproj",
       "projectName": "OngProject",
-      "projectPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject\\OngProject.csproj",
-      "packagesPath": "C:\\Users\\Joaco Bautista\\.nuget\\packages\\",
-      "outputPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject\\obj\\",
+      "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject\\OngProject.csproj",
+      "packagesPath": "C:\\Users\\anis_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Joaco Bautista\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\anis_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6273,11 +6268,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.Application\\OngProject.Application.csproj": {
-              "projectPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.Application\\OngProject.Application.csproj"
+            "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj": {
+              "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj"
             },
-            "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
-              "projectPath": "D:\\Cursos\\Alkemy\\warmup\\sprint1-creacion-entidades\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
+            "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
             }
           }
         }
@@ -6315,7 +6310,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.208\\RuntimeIdentifierGraph.json"
       }
     }
   }
