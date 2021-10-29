@@ -13,6 +13,7 @@ namespace OngProject.DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(60);
             builder.Property(m => m.LastName)
+                .IsRequired()
                 .HasMaxLength(60);
             builder.HasIndex(m => m.Email)
                 .IsUnique();
