@@ -46,3 +46,15 @@ D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Entities\obj\Debug
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Entities\obj\Debug\net5.0\ref\OngProject.Domain.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.pdb
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\bin\Debug\net5.0\OngProject.Domain.deps.json
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\bin\Debug\net5.0\OngProject.Domain.dll
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\bin\Debug\net5.0\ref\OngProject.Domain.dll
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\bin\Debug\net5.0\OngProject.Domain.pdb
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.csproj.AssemblyReference.cache
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.AssemblyInfoInputs.cache
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.AssemblyInfo.cs
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.csproj.CoreCompileInputs.cache
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.dll
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\ref\OngProject.Domain.dll
+c:\Users\pc\Documents\GitHub\OT-100-Server\OngProject.Entities\obj\Debug\net5.0\OngProject.Domain.pdb

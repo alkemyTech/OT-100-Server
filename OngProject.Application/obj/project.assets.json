@@ -6026,19 +6026,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\anis_\\.nuget\\packages\\": {}
+    "C:\\Users\\pc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
       "projectName": "OngProject.Application",
-      "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
-      "packagesPath": "C:\\Users\\anis_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\obj\\",
+      "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\OngProject.Application.csproj",
+      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\anis_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6052,8 +6052,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
+            "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj"
             }
           }
         }
@@ -6096,7 +6096,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.208\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
