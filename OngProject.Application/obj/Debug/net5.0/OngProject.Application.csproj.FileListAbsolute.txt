@@ -51,3 +51,8 @@ D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Application\obj\De
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Application\obj\Debug\net5.0\OngProject.Application.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Application\obj\Debug\net5.0\ref\OngProject.Application.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.Application\obj\Debug\net5.0\OngProject.Application.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.DataAccess.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Domain.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.DataAccess.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\bin\Debug\net5.0\OngProject.Domain.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.Application\obj\Debug\net5.0\OngProject.Application.csproj.CopyComplete
