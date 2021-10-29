@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Activities;
+using OngProject.Application.Exceptions;
 using OngProject.DataAccess.Interfaces;
 using OngProject.Domain.Entities;
 
@@ -35,7 +35,7 @@ namespace OngProject.Application.Services
             var activity = await _unitOfWork.Activities.GetById(id);
 
             if (activity is null)
-                throw new Exception($"No se encontró la entidad {nameof(Activity)} de id ({id}).");
+                throw new NotFoundException(nameof(Activity), id);
 
             return _mapper.Map<GetActivityDetailsDto>(activity);
         }
@@ -55,7 +55,7 @@ namespace OngProject.Application.Services
             var activity = await _unitOfWork.Activities.GetById(id);
 
             if (activity is null)
-                throw new Exception($"No se encontró la entidad {nameof(Activity)} de id ({id}).");
+                throw new NotFoundException(nameof(Activity), id);
 
             activity.Id = id;
             await _unitOfWork.Activities.Update(_mapper.Map(activityDto, activity));
@@ -67,7 +67,7 @@ namespace OngProject.Application.Services
             var activity = await _unitOfWork.Activities.GetById(id);
 
             if (activity is null)
-                throw new Exception($"No se encontró la entidad {nameof(Activity)} de id ({id}).");
+                throw new NotFoundException(nameof(Activity), id);
 
             await _unitOfWork.Activities.Delete(activity);
             await _unitOfWork.CompleteAsync();

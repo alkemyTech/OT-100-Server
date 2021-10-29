@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Members;
+using OngProject.Application.Exceptions;
 using OngProject.DataAccess.Interfaces;
 using OngProject.Domain.Entities;
 
@@ -35,7 +35,7 @@ namespace OngProject.Application.Services
             var member = await _unitOfWork.Members.GetById(id);
 
             if (member is null)
-                throw new Exception($"No se encontró la entidad {nameof(Member)} de id ({id}).");
+                throw new NotFoundException(nameof(Member), id);
 
             return _mapper.Map<GetMemberDetailsDto>(member);
         }
@@ -55,7 +55,7 @@ namespace OngProject.Application.Services
             var member = await _unitOfWork.Members.GetById(id);
             
             if (member is null)
-                throw new Exception($"No se encontró la entidad {nameof(Member)} de id ({id}).");
+                throw new NotFoundException(nameof(Member), id);
 
             member.Id = id;
             await _unitOfWork.Members.Update(_mapper.Map(memberDto, member));
@@ -67,7 +67,7 @@ namespace OngProject.Application.Services
             var member = await _unitOfWork.Members.GetById(id);
             
             if (member is null)
-                throw new Exception($"No se encontró la entidad {nameof(Member)} de id ({id}).");
+                throw new NotFoundException(nameof(Member), id);
 
             await _unitOfWork.Members.Delete(member);
             await _unitOfWork.CompleteAsync();
