@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using OngProject.DataAccess.Repositories.GenericRepository;
 using OngProject.Domain.Entities;
 
@@ -10,9 +13,20 @@ namespace OngProject.DataAccess.Repositories.NewsRepository
         {
         }
 
-        public async Task SoftDelete(News news)
+       public override async Task<IEnumerable<News>> GetAll()
         {
-            await Task.FromResult(DbContext.News.Remove(news));
+            return await DbContext.News
+                .AsNoTracking()
+                .Where(m => m.DeletedAt == null)
+                .ToListAsync();
+        }
+
+        public override async Task<News> GetById(int id)
+        {
+            return await DbContext.News
+                .AsNoTracking()
+                .Where(m => m.DeletedAt == null)
+                .FirstOrDefaultAsync(m => m.Id.Equals(id));
         }
     }
 }

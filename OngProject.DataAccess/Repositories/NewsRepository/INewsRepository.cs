@@ -6,6 +6,6 @@ namespace OngProject.DataAccess.Repositories.NewsRepository
 {
     public interface INewsRepository : IGenericRepository<News>
     {
-        Task SoftDelete(News news);
+        
     }
 }
