@@ -23,14 +23,16 @@ namespace OngProject.DataAccess.Repositories.GenericRepository
             return await DbContext.Set<T>().FindAsync(id);
         }
 
-        public async Task Create(T entity)
+        public async Task<T> Create(T entity)
         {
             await DbContext.Set<T>().AddAsync(entity);
+            return entity;
         }
 
-        public async Task Update(T entity)
+        public async Task<T> Update(T entity)
         {
             await Task.FromResult(DbContext.Set<T>().Update(entity));
+            return entity;
         }
 
         public async Task Delete(T entity)
