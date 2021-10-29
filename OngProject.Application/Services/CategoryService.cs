@@ -34,31 +34,35 @@ namespace OngProject.Application.Services
 
         public async Task<GetCategoriesDto> GetById(int id)
         {
-            var categories = await _unitOfWork.Categories.GetById(id);
-            GetCategoriesDto result = _mapper.Map<Category, GetCategoriesDto>(categories);
-            return result;
+            var category = await _unitOfWork.Categories.GetById(id);
+            return _mapper.Map<GetCategoriesDto>(category);
         }
 
-        public async Task<GetCategoriesDto> Add(CreateCategoryDto createCategoryDto)
+        public async Task<GetCategoriesDto> CreateCategory(CreateCategoryDto createCategoryDto)
         {
-            Category category = _mapper.Map<CreateCategoryDto, Category>(createCategoryDto);
-            Category categoryAdded = await _unitOfWork.Categories.Create(category);
-            GetCategoriesDto getCategoriesDto = _mapper.Map<Category, GetCategoriesDto>(categoryAdded);
-            return getCategoriesDto;
+            var category = _mapper.Map<Category>(createCategoryDto);
+
+            await _unitOfWork.Categories.Create(category);
+            await _unitOfWork.CompleteAsync();
+
+            return _mapper.Map<GetCategoriesDto>(category);
         }
 
-        public async Task<GetCategoriesDto> Update(UpdateCategoryDto updateCategoryDto)
+        public async Task Update(UpdateCategoryDto updateCategoryDto)
         {
-            Category category = _mapper.Map<UpdateCategoryDto, Category>(updateCategoryDto);
-            Category categoryUpdated = await _unitOfWork.Categories.Update(category);
-            GetCategoriesDto getCategoriesDto = _mapper.Map<Category, GetCategoriesDto>(categoryUpdated);
-            return getCategoriesDto;
+            var category = _mapper.Map<Category>(updateCategoryDto);
+
+            await _unitOfWork.Categories.Update(category);
+            await _unitOfWork.CompleteAsync();
+
         }
 
         public async Task Delete(int id)
         {
             var categories = await _unitOfWork.Categories.GetById(id);
             await _unitOfWork.Categories.Delete(categories);
+            await _unitOfWork.CompleteAsync();
+
         }
 
     }

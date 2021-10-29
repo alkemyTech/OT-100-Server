@@ -32,7 +32,7 @@ namespace OngProject.Controllers
         public async Task<ActionResult> Post([FromBody] CreateCategoryDto model)
         {
             if (ModelState.IsValid)
-                return Ok(await _service.Add(model));
+                return Ok(await _service.CreateCategory(model));
             else
                 return BadRequest(ModelState);
         }
@@ -41,7 +41,10 @@ namespace OngProject.Controllers
         public async Task<ActionResult> Put([FromBody] UpdateCategoryDto model)
         {
             if (ModelState.IsValid)
-                return Ok(await _service.Update(model));
+            {
+                await _service.Update(model);
+                return Ok();
+            }
             else
                 return BadRequest(ModelState);
         }
