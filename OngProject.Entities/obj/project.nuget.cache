@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SEdQ1+juZFlb1/dJur4MkPYl7tXpQ4OvIksTzLPqLkt37uLy/frq1GZdBWdDXtcnknLzaFUEy9nnR+zQAjZqBQ==",
+  "dgSpecHash": "P8gqQv9kYqm6FMOJ/k0S/CzuvoeajvyGCoqLJg82He2+bkDjHzXFOJNmuf0tqKSQ2yItBgTKcJr/TOUgqCBb/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server-Organizations\\OngProject.Entities\\OngProject.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

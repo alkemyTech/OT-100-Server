@@ -5717,20 +5717,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\anis_\\.nuget\\packages\\": {}
+    "C:\\Users\\Matias\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server-Organizations\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
       "projectName": "OngProject.DataAccess",
-      "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
-      "packagesPath": "C:\\Users\\anis_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.DataAccess\\obj\\",
+      "projectPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server-Organizations\\OngProject.DataAccess\\OngProject.DataAccess.csproj",
+      "packagesPath": "C:\\Users\\Matias\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server-Organizations\\OngProject.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\anis_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Matias\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -5743,8 +5751,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj": {
-              "projectPath": "C:\\Users\\anis_\\Documents\\GitHub\\OT-100-Server\\OngProject.Entities\\OngProject.Domain.csproj"
+            "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server-Organizations\\OngProject.Entities\\OngProject.Domain.csproj": {
+              "projectPath": "C:\\Users\\Matias\\Source\\Repos\\OT-100-Server-Organizations\\OngProject.Entities\\OngProject.Domain.csproj"
             }
           }
         }
@@ -5779,7 +5787,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.208\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
