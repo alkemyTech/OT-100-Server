@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using OngProject.DataAccess.Interfaces;
 using OngProject.DataAccess.Repositories.MemberRepository;
+using OngProject.DataAccess.Repositories.UserRepository;
 
 namespace OngProject.DataAccess
 {
@@ -14,10 +15,12 @@ namespace OngProject.DataAccess
             _dbContext = dbContext;
 
             Members = new MemberRepository(_dbContext);
+            Users = new UserRepository(_dbContext);
         }
         
         public IMemberRepository Members { get; }
-        
+        public IUserRepository Users { get; }
+
         public async Task CompleteAsync()
         {
             await _dbContext.SaveChangesAsync();

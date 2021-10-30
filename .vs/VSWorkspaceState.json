@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\OngProject",
+    "\\OngProject.Application",
+    "\\OngProject.DataAccess",
+    "\\OngProject.DataAccess\\Repositories",
+    "\\OngProject.DataAccess\\Repositories\\MemberRepository",
+    "\\OngProject.DataAccess\\Repositories\\UserRepository"
   ],
-  "SelectedNode": "\\OngProject.sln",
+  "SelectedNode": "\\OngProject.DataAccess\\Repositories\\UserRepository",
   "PreviewInSolutionExplorer": false
 }
