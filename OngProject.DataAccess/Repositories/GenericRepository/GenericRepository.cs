@@ -25,14 +25,14 @@ namespace OngProject.DataAccess.Repositories.GenericRepository
 
         public async Task Create(T entity)
         {
-            await DbContext.Set<T>().AddAsync(entity);
+            await Task.FromResult(DbContext.Set<T>().Add(entity));
         }
 
         public async Task Update(T entity)
         {
             await Task.FromResult(DbContext.Set<T>().Update(entity));
         }
-
+        
         public async Task Delete(T entity)
         {
             await Task.FromResult(DbContext.Set<T>().Remove(entity));

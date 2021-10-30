@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
+using OngProject.Application.Mappings;
+using OngProject.Domain.Entities;
 
 namespace OngProject.Application.DTOs.Members
 {
-    public class CreateMemberDto
+    public class CreateMemberDto : IMapFrom<Member>
     {
         [Required]
         [StringLength(60)]
@@ -23,7 +24,7 @@ namespace OngProject.Application.DTOs.Members
         
         //[Required]
         [DataType(DataType.Upload)]
-        public IFormFile Image { get; set; }
+        public string Image { get; set; }
         
         [StringLength(1200)]
         public string Description { get; set; }
