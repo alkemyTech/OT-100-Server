@@ -11,8 +11,11 @@ namespace OngProject.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped(typeof(MemberService));
+            services.AddScoped(typeof(TestimonyService));
+            services.AddScoped(typeof(RoleService));
             
             return services;
         }
+
     }
 }

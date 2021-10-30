@@ -238,3 +238,5 @@ D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\O
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\ref\OngProject.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\OngProject.pdb
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\OngProject.genruntimeconfig.cache
+C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject\bin\Debug\net5.0\Humanizer.dll
+C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
