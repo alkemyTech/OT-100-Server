@@ -15,10 +15,17 @@ namespace OngProject.DataAccess
             _dbContext = dbContext;
 
             Members = new MemberRepository(_dbContext);
+            Activities = new ActivityRepository(_dbContext);
+            News = new NewsRepository(_dbContext);
             Categories = new CategoryRepository(_dbContext);
         }
         
         public IMemberRepository Members { get; }
+        public IActivityRepository Activities { get; }
+
+        public INewsRepository News { get; }
+
+
         public ICategoryRepository Categories { get; }
 
         public async Task CompleteAsync()

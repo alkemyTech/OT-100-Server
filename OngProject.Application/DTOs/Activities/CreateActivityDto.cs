@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using OngProject.Application.Mappings;
+using OngProject.Domain.Entities;
 
 namespace OngProject.Application.DTOs.Activities
 {

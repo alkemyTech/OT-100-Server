@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OngProject.Application;
 using OngProject.DataAccess;
+using OngProject.Filters;
 
 namespace OngProject
 {
@@ -23,7 +24,8 @@ namespace OngProject
             services.AddDataAccessLayer(Configuration);
             services.AddApplicationLayer();
 
-            services.AddControllers();
+            services.AddControllers(ops => 
+                ops.Filters.Add<ApiExceptionFilterAttribute>());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OngProject", Version = "v1" });

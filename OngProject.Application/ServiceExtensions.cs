@@ -10,8 +10,11 @@ namespace OngProject.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddScoped(typeof(MemberService));
-            services.AddScoped(typeof(CategoryService));
+            services.AddScoped<MemberService>();
+            services.AddScoped<ActivityService>();
+            services.AddScoped<NewsService>();
+            
+            services.AddScoped<CategoryService>());
 
             return services;
         }

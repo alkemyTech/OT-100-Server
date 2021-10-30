@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using OngProject.DataAccess.Repositories.GenericRepository;
 using OngProject.Domain.Entities;
 
@@ -8,11 +11,23 @@ namespace OngProject.DataAccess.Repositories.MemberRepository
     {
         public MemberRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
+            
         }
 
-        public async Task SoftDelete(Member member)
+        public override async Task<IEnumerable<Member>> GetAll()
         {
-            await Task.FromResult(DbContext.Members.Remove(member));
+            return await DbContext.Members
+                .AsNoTracking()
+                .Where(m => m.DeletedAt == null)
+                .ToListAsync();
+        }
+
+        public override async Task<Member> GetById(int id)
+        {
+            return await DbContext.Members
+                .AsNoTracking()
+                .Where(m => m.DeletedAt == null)
+                .FirstOrDefaultAsync(m => m.Id.Equals(id));
         }
     }
 }

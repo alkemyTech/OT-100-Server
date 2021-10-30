@@ -51,7 +51,6 @@ C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\staticwebassets\OngProject.StaticWebAssets.xml
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\scopedcss\bundle\OngProject.styles.css
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.RazorTargetAssemblyInfo.cache
-C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.CopyComplete
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.dll
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\ref\OngProject.dll
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.pdb
@@ -238,3 +237,6 @@ D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\O
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\ref\OngProject.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\OngProject.pdb
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject\obj\Debug\net5.0\OngProject.genruntimeconfig.cache
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\Humanizer.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject\obj\Debug\net5.0\OngProject.csproj.CopyComplete

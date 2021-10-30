@@ -13,26 +13,26 @@ namespace OngProject.DataAccess.Repositories.GenericRepository
             DbContext = dbContext;
         }
         
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             return await DbContext.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetById(int id)
+        public virtual async Task<T> GetById(int id)
         {
             return await DbContext.Set<T>().FindAsync(id);
         }
 
         public async Task Create(T entity)
         {
-            await DbContext.Set<T>().AddAsync(entity);
+            await Task.FromResult(DbContext.Set<T>().Add(entity));
         }
 
         public async Task Update(T entity)
         {
             await Task.FromResult(DbContext.Set<T>().Update(entity));
         }
-
+        
         public async Task Delete(T entity)
         {
             await Task.FromResult(DbContext.Set<T>().Remove(entity));

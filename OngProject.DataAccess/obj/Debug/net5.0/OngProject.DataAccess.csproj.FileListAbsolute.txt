@@ -12,7 +12,6 @@ C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\D
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.pdb
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\bin\Debug\net5.0\OngProject.Domain.dll
 C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\bin\Debug\net5.0\OngProject.Domain.pdb
-C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.csproj.CopyComplete
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.csprojAssemblyReference.cache
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\anis_\Documents\GitHub\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.AssemblyInfoInputs.cache
@@ -51,3 +50,4 @@ D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.DataAccess\obj\Deb
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.DataAccess\obj\Debug\net5.0\ref\OngProject.DataAccess.dll
 D:\Cursos\Alkemy\warmup\sprint1-creacion-entidades\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.pdb
+C:\Users\PC\Desktop\Career\.NET\Alkemy\OT-100-Server\OngProject.DataAccess\obj\Debug\net5.0\OngProject.DataAccess.csproj.CopyComplete
