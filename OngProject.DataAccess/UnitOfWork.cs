@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using OngProject.DataAccess.Interfaces;
-using OngProject.DataAccess.Repositories.ActivityRepository;
 using OngProject.DataAccess.Repositories.MemberRepository;
 
 namespace OngProject.DataAccess
@@ -16,10 +15,14 @@ namespace OngProject.DataAccess
 
             Members = new MemberRepository(_dbContext);
             Activities = new ActivityRepository(_dbContext);
+            News = new NewsRepository(_dbContext);
         }
         
         public IMemberRepository Members { get; }
         public IActivityRepository Activities { get; }
+
+        public INewsRepository News { get; }
+
 
         public async Task CompleteAsync()
         {
