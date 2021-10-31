@@ -5,6 +5,7 @@ using OngProject.DataAccess.Repositories.ActivityRepository;
 using OngProject.DataAccess.Repositories.CategoryRepository;
 using OngProject.DataAccess.Repositories.MemberRepository;
 using OngProject.DataAccess.Repositories.NewsRepository;
+using OngProject.DataAccess.Repositories.OrganizationRepository;
 
 namespace OngProject.DataAccess
 {
@@ -20,6 +21,7 @@ namespace OngProject.DataAccess
             Activities = new ActivityRepository(_dbContext);
             News = new NewsRepository(_dbContext);
             Categories = new CategoryRepository(_dbContext);
+            Organizations = new OrganizationRepository(_dbContext);
         }
         
 
@@ -27,6 +29,7 @@ namespace OngProject.DataAccess
         public IActivityRepository Activities { get; }
         public INewsRepository News { get; }
         public ICategoryRepository Categories { get; }
+        public IOrganizationRepository Organizations { get; }
 
 
         public async Task CompleteAsync()
