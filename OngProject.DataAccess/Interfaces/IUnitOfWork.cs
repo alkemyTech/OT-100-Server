@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
+using OngProject.DataAccess.Repositories.ActivityRepository;
 using OngProject.DataAccess.Repositories.CategoryRepository;
 using OngProject.DataAccess.Repositories.MemberRepository;
+using OngProject.DataAccess.Repositories.NewsRepository;
 
 namespace OngProject.DataAccess.Interfaces
 {

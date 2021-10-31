@@ -37,12 +37,12 @@ namespace OngProject.Controllers
                 return BadRequest(ModelState);
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Put([FromBody] UpdateCategoryDto model)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, [FromBody] CreateCategoryDto model)
         {
             if (ModelState.IsValid)
             {
-                await _service.Update(model);
+                await _service.Update(id,model);
                 return Ok();
             }
             else

@@ -13,8 +13,7 @@ namespace OngProject.Application
             services.AddScoped<MemberService>();
             services.AddScoped<ActivityService>();
             services.AddScoped<NewsService>();
-            
-            services.AddScoped<CategoryService>());
+            services.AddScoped<CategoryService>();
 
             return services;
         }

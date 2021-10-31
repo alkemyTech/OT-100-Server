@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using OngProject.DataAccess.Interfaces;
+using OngProject.DataAccess.Repositories.ActivityRepository;
 using OngProject.DataAccess.Repositories.CategoryRepository;
 using OngProject.DataAccess.Repositories.MemberRepository;
+using OngProject.DataAccess.Repositories.NewsRepository;
 
 namespace OngProject.DataAccess
 {
@@ -20,13 +22,12 @@ namespace OngProject.DataAccess
             Categories = new CategoryRepository(_dbContext);
         }
         
+
         public IMemberRepository Members { get; }
         public IActivityRepository Activities { get; }
-
         public INewsRepository News { get; }
-
-
         public ICategoryRepository Categories { get; }
+
 
         public async Task CompleteAsync()
         {

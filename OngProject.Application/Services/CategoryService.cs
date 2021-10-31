@@ -2,12 +2,11 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs.Categories;
+using OngProject.Application.Exceptions;
 using OngProject.DataAccess.Interfaces;
 using OngProject.Domain.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OngProject.Application.Services
@@ -28,14 +27,19 @@ namespace OngProject.Application.Services
             var categories = await _unitOfWork.Categories.GetAll();
             return categories
                 .AsQueryable()
+               //.Where(m => m.DeletedAt == null) Hay que agregar la logica para las entidades eliminadas?
                 .AsNoTracking()
                 .ProjectTo<GetCategoriesDto>(_mapper.ConfigurationProvider);
         }
 
-        public async Task<GetCategoriesDto> GetById(int id)
+        public async Task<GetCategoryDetailsDto> GetById(int id)
         {
             var category = await _unitOfWork.Categories.GetById(id);
-            return _mapper.Map<GetCategoriesDto>(category);
+
+            if (category is null)// || category.DeletedAt != null)
+                throw new NotFoundException(nameof(Category), id);
+
+            return _mapper.Map<GetCategoryDetailsDto>(category);
         }
 
         public async Task<GetCategoriesDto> CreateCategory(CreateCategoryDto createCategoryDto)
@@ -48,19 +52,26 @@ namespace OngProject.Application.Services
             return _mapper.Map<GetCategoriesDto>(category);
         }
 
-        public async Task Update(UpdateCategoryDto updateCategoryDto)
+        public async Task Update(int id, CreateCategoryDto updateCategory)
         {
-            var category = _mapper.Map<Category>(updateCategoryDto);
+            var category = await _unitOfWork.Categories.GetById(id);
 
-            await _unitOfWork.Categories.Update(category);
+            if (category is null)
+                throw new NotFoundException(nameof(Category), id);
+
+            await _unitOfWork.Categories.Update(_mapper.Map(updateCategory,category));
             await _unitOfWork.CompleteAsync();
 
         }
 
         public async Task Delete(int id)
         {
-            var categories = await _unitOfWork.Categories.GetById(id);
-            await _unitOfWork.Categories.Delete(categories);
+            var category = await _unitOfWork.Categories.GetById(id);
+
+            if (category is null)
+                throw new NotFoundException(nameof(Category), id);
+
+            await _unitOfWork.Categories.Delete(category);
             await _unitOfWork.CompleteAsync();
 
         }
