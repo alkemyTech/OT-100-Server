@@ -10,8 +10,8 @@ using OngProject.DataAccess;
 namespace OngProject.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211029000955_Initial")]
-    partial class Initial
+    [Migration("20211030232251_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,8 +75,7 @@ namespace OngProject.DataAccess.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("Image")
-                        .HasMaxLength(240)
-                        .HasColumnType("nvarchar(240)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -206,9 +205,7 @@ namespace OngProject.DataAccess.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
-                        .HasMaxLength(240)
-                        .HasColumnType("nvarchar(240)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

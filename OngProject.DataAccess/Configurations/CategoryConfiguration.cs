@@ -17,8 +17,7 @@ namespace OngProject.DataAccess.Configurations
             builder.Property(m => m.Description)
                  .HasMaxLength(1000);
 
-            builder.Property(m => m.Image)
-                .HasMaxLength(240);
+            builder.Property(m => m.Image);
 
             builder.Property(m => m.CreatedAt)
                 .HasColumnType("SMALLDATETIME");
