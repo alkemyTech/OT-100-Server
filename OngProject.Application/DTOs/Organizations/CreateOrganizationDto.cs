@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using OngProject.Application.Mappings;
+using OngProject.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace OngProject.Application.Dto.Organizations
+namespace OngProject.Application.DTOs.Organizations
 {
-    public class CreateOrganizationDto
+    public class CreateOrganizationDto : IMapFrom<Organization>
     {
         [Required]
         [StringLength(60)]
         public string Name { get; set; }
 
         [Required]
-        [DataType(DataType.Upload)]
-        public IFormFile Image { get; set; }
+        public string Image { get; set; }
 
         [StringLength(1200)]
         public string Address { get; set; }
