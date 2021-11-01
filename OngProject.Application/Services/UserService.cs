@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs.Users;
 using OngProject.DataAccess.Interfaces;
 using OngProject.Domain.Entities;
@@ -22,13 +23,14 @@ namespace OngProject.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GetUsersDto>> GetUsers()
+        public async Task<IEnumerable<GetUserDto>> GetUsers()
         {
-            var members = await _unitOfWork.Users.GetAll();
+            var users = await _unitOfWork.Users.GetAll();
 
-            return members
+            return users
                 .AsQueryable()
-                .ProjectTo<GetUsersDto>(_mapper.ConfigurationProvider);
+                .AsNoTracking()
+                .ProjectTo<GetUserDto>(_mapper.ConfigurationProvider);
         }
 
         public async Task<int> CreateUser(CreateUserDto userDto)

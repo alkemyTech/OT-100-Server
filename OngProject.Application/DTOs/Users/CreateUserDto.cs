@@ -26,5 +26,9 @@ namespace OngProject.Application.DTOs.Users
         [Required]
         [StringLength(240)]
         public string Photo { get; set; }
+
+        [Required]
+        public int RoleId { get; set; }
+
     }
 }
