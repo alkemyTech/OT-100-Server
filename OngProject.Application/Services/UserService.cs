@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs.Users;
-using OngProject.DataAccess.Interfaces;
 using OngProject.Domain.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
+using OngProject.Application.Exceptions;
+using OngProject.Application.Interfaces;
 
 namespace OngProject.Application.Services
 {
@@ -29,7 +27,6 @@ namespace OngProject.Application.Services
 
             return users
                 .AsQueryable()
-                .AsNoTracking()
                 .ProjectTo<GetUserDto>(_mapper.ConfigurationProvider);
         }
 
@@ -48,7 +45,7 @@ namespace OngProject.Application.Services
             var users = await _unitOfWork.Users.GetById(id);
 
             if (users is null)
-                throw new Exception($"No se encontró la entidad {nameof(User)} de id ({id}).");
+                throw new NotFoundException(nameof(User), id);
 
             return _mapper.Map<GetUserDetailsDto>(users);
         }
@@ -58,7 +55,7 @@ namespace OngProject.Application.Services
             var user = await _unitOfWork.Users.GetById(id);
 
             if (user is null)
-                throw new Exception($"No se encontró la entidad {nameof(User)} de id ({id}).");
+                throw new NotFoundException(nameof(User), id);
 
             user.Id = id;
             await _unitOfWork.Users.Update(_mapper.Map(usersDto, user));
@@ -70,7 +67,7 @@ namespace OngProject.Application.Services
             var user = await _unitOfWork.Users.GetById(id);
 
             if (user is null)
-                throw new Exception($"No se encontró la entidad {nameof(User)} de id ({id}).");
+                throw new NotFoundException(nameof(User), id);
 
             await _unitOfWork.Users.Delete(user);
             await _unitOfWork.CompleteAsync();

@@ -15,6 +15,9 @@ namespace OngProject.Application
             services.AddScoped<NewsService>();
             services.AddScoped<CategoryService>();
             services.AddScoped<OrganizationService>();
+            services.AddScoped<UserService>();
+            services.AddScoped<RoleService>();
+            services.AddScoped<TestimonyService>();
 
             return services;
         }

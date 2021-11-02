@@ -5,7 +5,8 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Activities;
 using OngProject.Application.Exceptions;
-using OngProject.DataAccess.Interfaces;
+using OngProject.Application.Interfaces;
+using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
@@ -21,13 +22,13 @@ namespace OngProject.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GetActivitiesDto>> GetActivities()
+        public async Task<List<GetActivitiesDto>> GetActivities()
         {
             var activities = await _unitOfWork.Activities.GetAll();
 
             return activities
                 .AsQueryable()
-                .ProjectTo<GetActivitiesDto>(_mapper.ConfigurationProvider);
+                .ProjectToList<GetActivitiesDto>(_mapper.ConfigurationProvider);
         }
 
         public async Task<GetActivityDetailsDto> GetActivityDetails(int id)

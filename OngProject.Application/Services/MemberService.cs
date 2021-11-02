@@ -6,7 +6,8 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs.Members;
 using OngProject.Application.Exceptions;
-using OngProject.DataAccess.Interfaces;
+using OngProject.Application.Interfaces;
+using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
@@ -22,14 +23,13 @@ namespace OngProject.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GetMembersDto>> GetMembers()
+        public async Task<List<GetMembersDto>> GetMembers()
         {
             var members = await _unitOfWork.Members.GetAll();
             
             return members
                 .AsQueryable()
-                .AsNoTracking()
-                .ProjectTo<GetMembersDto>(_mapper.ConfigurationProvider);
+                .ProjectToList<GetMembersDto>(_mapper.ConfigurationProvider);
         }
 
         public async Task<GetMemberDetailsDto> GetMemberDetails(int id)

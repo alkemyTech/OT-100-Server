@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using OngProject.Application.DTOs.Categories;
+using OngProject.Application.DTOs.Organizations;
 using OngProject.Application.Services;
 
 namespace OngProject.Controllers
 {
     [ApiController]
-    [Route("api/categories")]
-    public class CategoriesController : ControllerBase
+    [Route("api/organizations")]
+    public class OrganizationsController : ControllerBase
     {
-        private readonly CategoryService _service;
+        private readonly OrganizationService _service;
 
-        public CategoriesController(CategoryService service)
+        public OrganizationsController(OrganizationService service)
         {
             _service = service;
         }
@@ -29,13 +29,13 @@ namespace OngProject.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateCategoryDto model)
+        public async Task<ActionResult> Post([FromBody] CreateOrganizationDto model)
         {
-            return Ok(await _service.CreateCategory(model));
+            return Ok(await _service.CreateOrganization(model));
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] CreateCategoryDto model)
+        public async Task<ActionResult> Put(int id, [FromBody] CreateOrganizationDto model)
         {
             await _service.Update(id,model);
             return NoContent();

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs.Newss;
-using OngProject.DataAccess.Interfaces;
+using OngProject.Application.Exceptions;
+using OngProject.Application.Interfaces;
 using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
@@ -27,7 +27,6 @@ namespace OngProject.Application.Services
             var news = await _unitOfWork.News.GetAll();
             return news
                 .AsQueryable()
-                .AsNoTracking()
                 .ProjectTo<GetNewsDto>(_mapper.ConfigurationProvider);
         }
 
@@ -37,7 +36,7 @@ namespace OngProject.Application.Services
             var news = await _unitOfWork.News.GetById(id);
 
             if (news is null)
-                throw new Exception($"No se encontró la entidad {nameof(News)} de id ({id}).");
+                throw new NotFoundException(nameof(News), id);
 
             return _mapper.Map<GetNewsDetailsDto>(news);
         }
@@ -59,7 +58,7 @@ namespace OngProject.Application.Services
             var news = await _unitOfWork.News.GetById(id);
             
             if (news is null)
-                throw new Exception($"No se encontró la entidad {nameof(News)} de id ({id}).");
+                throw new NotFoundException(nameof(News), id);
 
             news.Id = id;
             await _unitOfWork.News.Update(_mapper.Map(newsDto, news));
@@ -72,7 +71,7 @@ namespace OngProject.Application.Services
             var news = await _unitOfWork.News.GetById(id);
             
             if (news is null)
-                throw new Exception($"No se encontró la entidad {nameof(News)} de id ({id}).");
+                throw new NotFoundException(nameof(News), id);
 
             await _unitOfWork.News.Delete(news);
             await _unitOfWork.CompleteAsync();

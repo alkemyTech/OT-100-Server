@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OngProject.DataAccess.Interfaces;
+using OngProject.Application.Interfaces;
+using OngProject.DataAccess.Context;
 
 namespace OngProject.DataAccess
 {
