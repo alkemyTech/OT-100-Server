@@ -2,7 +2,6 @@
 using OngProject.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace OngProject.Application.DTOs.Users
 {
     public class CreateUserDto : IMapFrom<User>
@@ -26,9 +25,5 @@ namespace OngProject.Application.DTOs.Users
         [Required]
         [StringLength(240)]
         public string Photo { get; set; }
-
-        [Required]
-        public int RoleId { get; set; }
-
     }
 }
