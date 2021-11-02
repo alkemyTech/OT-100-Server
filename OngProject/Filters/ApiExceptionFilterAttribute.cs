@@ -43,7 +43,7 @@ namespace OngProject.Filters
                 return;
             }
 
-            HandleUnknownException(context);
+            //HandleUnknownException(context);
         }
 
         private void HandleInvalidModelStateException(ExceptionContext context)
