@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs.Categories;
 using OngProject.Application.Exceptions;
-using OngProject.DataAccess.Interfaces;
 using OngProject.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
+using OngProject.Application.Interfaces;
 
 namespace OngProject.Application.Services
 {
@@ -27,8 +26,6 @@ namespace OngProject.Application.Services
             var categories = await _unitOfWork.Categories.GetAll();
             return categories
                 .AsQueryable()
-               //.Where(m => m.DeletedAt == null) Hay que agregar la logica para las entidades eliminadas?
-                .AsNoTracking()
                 .ProjectTo<GetCategoriesDto>(_mapper.ConfigurationProvider);
         }
 

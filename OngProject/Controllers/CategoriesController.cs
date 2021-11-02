@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using OngProject.Application.DTOs.Categories;
 using OngProject.Application.Services;
-using System.Threading.Tasks;
 
 namespace OngProject.Controllers
 {
@@ -31,29 +31,21 @@ namespace OngProject.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CreateCategoryDto model)
         {
-            if (ModelState.IsValid)
-                return Ok(await _service.CreateCategory(model));
-            else
-                return BadRequest(ModelState);
+            return Ok(await _service.CreateCategory(model));
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] CreateCategoryDto model)
         {
-            if (ModelState.IsValid)
-            {
-                await _service.Update(id,model);
-                return Ok();
-            }
-            else
-                return BadRequest(ModelState);
+            await _service.Update(id,model);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             await _service.Delete(id);
-            return Ok();
+            return NoContent();
         }
     }
 }

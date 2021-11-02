@@ -1,7 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OngProject.DataAccess.Interfaces;
+using Microsoft.IdentityModel.Tokens;
+using OngProject.Application.Interfaces;
+using OngProject.DataAccess.Context;
+using OngProject.DataAccess.Identity;
 
 namespace OngProject.DataAccess
 {
@@ -15,6 +21,37 @@ namespace OngProject.DataAccess
                     m.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            #region Authentication
+
+            services.Configure<JwtConfig>(configuration.GetSection("JwtConfig"));
+
+            services.AddAuthentication(ops =>
+                {
+                    ops.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    ops.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    ops.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(jwt =>
+                {
+                    var key = Encoding.ASCII.GetBytes(configuration["JwtConfig:Secret"]);
+
+                    jwt.SaveToken = true;
+                    jwt.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        RequireExpirationTime = false,
+                        ValidateLifetime = true
+                    };
+                });
+
+            services.AddDefaultIdentity<IdentityUser>(ops => ops.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            #endregion
 
             return services;
         }

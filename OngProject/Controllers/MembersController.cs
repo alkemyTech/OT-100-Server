@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Members;
 using OngProject.Application.Services;
@@ -17,9 +18,9 @@ namespace OngProject.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<List<GetMembersDto>>> GetAll()
         {
-            return Ok(await _service.GetMembers());
+            return await _service.GetMembers();
         }
 
         [HttpGet("{id}")]

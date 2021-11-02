@@ -18,9 +18,9 @@ namespace OngProject.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetActivitiesDto>>> GetAll()
+        public async Task<ActionResult<List<GetActivitiesDto>>> GetAll()
         {
-            return Ok(await _service.GetActivities());
+            return await _service.GetActivities();
         }
 
         [HttpGet("{id}")]
