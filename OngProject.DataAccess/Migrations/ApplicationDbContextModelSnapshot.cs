@@ -315,6 +315,7 @@ namespace OngProject.DataAccess.Migrations
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 

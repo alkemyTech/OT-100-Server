@@ -1,4 +1,6 @@
-﻿namespace OngProject.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace OngProject.Domain.Entities
 {
     public class User:BaseEntity
     {
