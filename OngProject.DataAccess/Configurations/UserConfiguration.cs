@@ -21,10 +21,8 @@ namespace OngProject.DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(60);
             builder.Property(m => m.Password)
-                .IsRequired()
-                .HasMaxLength(24);
+                .IsRequired();
             builder.Property(m => m.Photo)
-                .IsRequired()
                 .HasMaxLength(240);
             builder.Property(m => m.CreatedAt)
               .HasColumnType("SMALLDATETIME");

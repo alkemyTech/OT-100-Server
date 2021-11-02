@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using OngProject.Application.Interfaces;
+using OngProject.Application.Interfaces.Identity;
 using OngProject.DataAccess.Context;
 using OngProject.DataAccess.Identity;
 
@@ -21,6 +22,7 @@ namespace OngProject.DataAccess
                     m.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ITokenHandlerService, TokenHandlerService>();
 
             #region Authentication
 
