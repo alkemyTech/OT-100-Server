@@ -12,9 +12,7 @@ namespace OngProject.DataAccess.Configurations
             builder.Property(m => m.Name)
                 .IsRequired()
                 .HasMaxLength(60);
-            builder.Property(m => m.Image)
-                .IsRequired()
-                .HasMaxLength(240);
+            builder.Property(m => m.Image);
             builder.Property(m => m.Address)
                 .HasMaxLength(1200);
             builder.Property(m => m.Phone)

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using OngProject.DataAccess.Interfaces;
+using OngProject.DataAccess.Repositories.ActivityRepository;
+using OngProject.DataAccess.Repositories.CategoryRepository;
 using OngProject.DataAccess.Repositories.MemberRepository;
-using OngProject.DataAccess.Repositories.UserRepository;
+using OngProject.DataAccess.Repositories.NewsRepository;
+using OngProject.DataAccess.Repositories.OrganizationRepository;
 
 namespace OngProject.DataAccess
 {
@@ -15,11 +18,19 @@ namespace OngProject.DataAccess
             _dbContext = dbContext;
 
             Members = new MemberRepository(_dbContext);
-            Users = new UserRepository(_dbContext);
+            Activities = new ActivityRepository(_dbContext);
+            News = new NewsRepository(_dbContext);
+            Categories = new CategoryRepository(_dbContext);
+            Organizations = new OrganizationRepository(_dbContext);
         }
         
+
         public IMemberRepository Members { get; }
-        public IUserRepository Users { get; }
+        public IActivityRepository Activities { get; }
+        public INewsRepository News { get; }
+        public ICategoryRepository Categories { get; }
+        public IOrganizationRepository Organizations { get; }
+
 
         public async Task CompleteAsync()
         {

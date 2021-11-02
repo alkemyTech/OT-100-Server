@@ -1,30 +1,29 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OngProject.DataAccess.Repositories.GenericRepository;
 using OngProject.Domain.Entities;
 
-namespace OngProject.DataAccess.Repositories.MemberRepository
+namespace OngProject.DataAccess.Repositories.NewsRepository
 {
-    public class MemberRepository : GenericRepository<Member>, IMemberRepository
+    public class NewsRepository : GenericRepository<News>, INewsRepository
     {
-        public MemberRepository(ApplicationDbContext dbContext) : base(dbContext)
+        public NewsRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
-            
         }
 
-        public override async Task<IEnumerable<Member>> GetAll()
+       public override async Task<IEnumerable<News>> GetAll()
         {
-            return await DbContext.Members
+            return await DbContext.News
                 .AsNoTracking()
                 .Where(m => m.DeletedAt == null)
                 .ToListAsync();
         }
 
-        public override async Task<Member> GetById(int id)
+        public override async Task<News> GetById(int id)
         {
-            return await DbContext.Members
+            return await DbContext.News
                 .AsNoTracking()
                 .Where(m => m.DeletedAt == null)
                 .FirstOrDefaultAsync(m => m.Id.Equals(id));
