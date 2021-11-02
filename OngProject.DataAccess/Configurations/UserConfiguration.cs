@@ -19,7 +19,7 @@ namespace OngProject.DataAccess.Configurations
                 .IsUnique();
             builder.Property(m => m.Email)
                 .IsRequired()
-                .HasMaxLength(60);
+                .HasMaxLength(256);
             builder.Property(m => m.Password)
                 .IsRequired();
             builder.Property(m => m.Photo)

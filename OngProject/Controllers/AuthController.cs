@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Identity;
@@ -21,7 +20,8 @@ namespace OngProject.Controllers
         private readonly ITokenHandlerService _tokenHandlerService;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AuthController(UserManager<IdentityUser> userManager, ITokenHandlerService tokenHandlerService, IUnitOfWork unitOfWork)
+        public AuthController(UserManager<IdentityUser> userManager, ITokenHandlerService tokenHandlerService, 
+            IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _tokenHandlerService = tokenHandlerService;
@@ -90,13 +90,9 @@ namespace OngProject.Controllers
              if (ModelState.IsValid)
              {
                  var userExist = await _userManager.FindByEmailAsync(userRegDto.Email);
+
                  if (userExist != null)
-                 {
-                     return BadRequest(new Result
-                     {
-                         Errors = new List<string> {"The Email already exist."}
-                     });
-                 }
+                     return BadRequest("The Email already exist.");
 
                  var newUser = new IdentityUser()
                  {
@@ -108,51 +104,26 @@ namespace OngProject.Controllers
                  var isCreated = await _userManager.CreateAsync(newUser, userRegDto.Password);
 
                  if (!isCreated.Succeeded)
-                 {
-                     return BadRequest(new Result
-                     {
-                         Errors = isCreated.Errors.Select(x => x.Description).ToList()
-                     });
-                 }
-                 
+                     return BadRequest(isCreated.Errors.Select(e => e.Description));
+
                  // Create the user on user table
                  var user = new User
                  {
-                    IdentityId = new Guid(newUser.Id),
-                    FirstName = userRegDto.FirstName,
-                    LastName = userRegDto.LastName,
-                    Email = userRegDto.Email,
-                    Password = newUser.PasswordHash,
-                    RoleId = 1 // Role Usuarios
+                     IdentityId = new Guid(newUser.Id),
+                     FirstName = userRegDto.FirstName,
+                     LastName = userRegDto.LastName,
+                     Email = userRegDto.Email,
+                     Password = newUser.PasswordHash,
+                     RoleId = 1 // Role Usuarios
                  };
 
                  await _unitOfWork.Users.Create(user);
                  await _unitOfWork.CompleteAsync();
-                 
-                 
-                 var parameters = new TokenParameters
-                 {
-                     Id = newUser.Id,
-                     UserName = newUser.UserName,
-                     PasswordHash = newUser.PasswordHash
-                 };
 
-                 var jwtToken = _tokenHandlerService.GenerateJwtToken(parameters);
-
-                 return Ok(new Result
-                 {
-                     Login = true,
-                     Token = jwtToken
-                 });
-
+                 return Ok(newUser.Email);
              }
              else
-             {
-                 return BadRequest(new Result
-                 {
-                     Errors = new List<string> {"Invalid Model."}
-                 });
-             }
+                 return BadRequest("Error when registering user.");
 
          }
     }

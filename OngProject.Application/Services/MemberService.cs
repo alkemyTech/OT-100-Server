@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs.Members;
 using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;

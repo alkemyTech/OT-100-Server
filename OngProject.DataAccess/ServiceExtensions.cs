@@ -22,7 +22,6 @@ namespace OngProject.DataAccess
                     m.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ITokenHandlerService, TokenHandlerService>();
 
             #region Authentication
 
@@ -52,6 +51,8 @@ namespace OngProject.DataAccess
 
             services.AddDefaultIdentity<IdentityUser>(ops => ops.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+            services.AddScoped<ITokenHandlerService, TokenHandlerService>();
 
             #endregion
 
