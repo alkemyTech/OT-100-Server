@@ -39,11 +39,11 @@ namespace OngProject.Controllers
 
         // ==================== Update News ==================== //
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, CreateNewsDto newsDto)
+        public async Task<ActionResult<GetNewsDetailsDto>> Update(int id, CreateNewsDto newsDto)
         {
             await _service.UpdateNews(id, newsDto);
 
-            return NoContent();
+            return await _service.GetNewsDetails(id);
         }
 
         // ==================== Soft Delete News ==================== //

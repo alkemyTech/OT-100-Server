@@ -52,7 +52,7 @@ namespace OngProject.Application.Services
         }
 
         // ==================== Update News ==================== //
-      public async Task UpdateNews(int id, CreateNewsDto newsDto)
+      public async Task<GetNewsDetailsDto> UpdateNews(int id, CreateNewsDto newsDto)
         {
             var news = await _unitOfWork.News.GetById(id);
             
@@ -62,6 +62,9 @@ namespace OngProject.Application.Services
             news.Id = id;
             await _unitOfWork.News.Update(_mapper.Map(newsDto, news));
             await _unitOfWork.CompleteAsync();
+
+            return _mapper.Map<GetNewsDetailsDto>(news);
+
         }
 
         // ==================== Soft Delete News ==================== //
