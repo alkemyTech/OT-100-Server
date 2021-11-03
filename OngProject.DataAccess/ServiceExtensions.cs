@@ -50,6 +50,7 @@ namespace OngProject.DataAccess
                 });
 
             services.AddDefaultIdentity<IdentityUser>(ops => ops.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             
             services.AddScoped<ITokenHandlerService, TokenHandlerService>();

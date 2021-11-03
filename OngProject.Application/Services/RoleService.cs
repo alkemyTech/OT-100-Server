@@ -40,10 +40,8 @@ namespace OngProject.Application.Services
             return _mapper.Map<GetRolesDto>(role);
         }
 
-        public async Task<int> CreateRole(CreateRoleDto roleyDto)
+        public async Task<int> CreateRole(Role role)
         {
-            var role = _mapper.Map<Role>(roleyDto);
-
             await _unitOfWork.Roles.Create(role);
             await _unitOfWork.CompleteAsync();
 

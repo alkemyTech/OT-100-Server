@@ -47,5 +47,21 @@ namespace OngProject.DataAccess.Repositories
                 return new Role();
             }
         }
+        
+        public async Task<Role> GetByGuid(Guid guid)
+        {
+            try
+            {
+                return await DbContext.Roles
+                    .AsNoTracking()
+                    .Where(a => a.DeletedAt == null)
+                    .FirstOrDefaultAsync(a => a.IdentityId.Equals(guid));
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, $"{typeof(RoleRepository)} GetByGuid method has generated an error");
+                return new Role();
+            }
+        }
     }
 }

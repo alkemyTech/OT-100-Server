@@ -40,7 +40,6 @@ namespace OngProject.Filters
             if (!context.ModelState.IsValid)
             {
                 HandleInvalidModelStateException(context);
-                return;
             }
 
             //HandleUnknownException(context);
