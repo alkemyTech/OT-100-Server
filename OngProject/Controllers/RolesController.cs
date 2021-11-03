@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Roles;
 using OngProject.Application.Services;
+using OngProject.Domain.Entities;
 
 namespace OngProject.Controllers
 {
@@ -11,10 +14,12 @@ namespace OngProject.Controllers
     public class RolesController : ControllerBase
     {
         private readonly RoleService _service;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public RolesController(RoleService service)
+        public RolesController(RoleService service, RoleManager<IdentityRole> roleManager)
         {
             _service = service;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -32,7 +37,35 @@ namespace OngProject.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreateRoleDto roleyDto)
         {
-            return await _service.CreateRole(roleyDto);
+            // Check if the role exist
+            var roleExist = await _roleManager.RoleExistsAsync(roleyDto.Name);
+
+            if (roleExist) 
+                return BadRequest("The Role already exist.");
+            
+            var newRole = new IdentityRole()
+            {
+                Name = roleyDto.Name
+            };
+                
+            var roleResult = await _roleManager.CreateAsync(newRole);
+
+            // We need to check if the role has been added successfully
+            if(roleResult.Succeeded)
+            {
+                var role = new Role
+                {
+                    IdentityId = new Guid(newRole.Id),
+                    Name = roleyDto.Name,
+                    Description = roleyDto.Description,
+                };
+                
+                var roleId = await _service.CreateRole(role);
+                
+                return Ok($"The role {roleyDto.Name} has been added successfully with id {roleId}");
+            } else 
+                return BadRequest("Error when registering Role.");
+
         }
 
         [HttpPut("{id}")]

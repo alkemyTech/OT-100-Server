@@ -23,10 +23,10 @@ namespace OngProject.DataAccess.Context
         public DbSet<Role> Roles { get; set; }
         public DbSet<Testimony> Testimonials { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            base.OnModelCreating(modelBuilder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(builder);
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
