@@ -33,7 +33,12 @@ namespace OngProject.Controllers
             _tokenHandlerService = tokenHandlerService;
             _unitOfWork = unitOfWork;
         }
-
+        
+        #region Documentation
+        [SwaggerOperation(Summary = "User Login")]
+        [SwaggerResponse(200, "Logged in. Returns Token")]
+        [SwaggerResponse(400, "Incorrect email or password.")]
+        #endregion
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] UserLoginRequestDto loginDto)
         {
