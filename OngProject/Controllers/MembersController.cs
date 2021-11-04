@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Members;
 using OngProject.Application.Services;
@@ -16,7 +17,7 @@ namespace OngProject.Controllers
         {
             _service = service;
         }
-
+        
         [HttpGet]
         public async Task<ActionResult<List<GetMembersDto>>> GetAll()
         {
