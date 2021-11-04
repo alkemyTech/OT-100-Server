@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Identity;
+using OngProject.Application.DTOs.Newss;
 using OngProject.Application.Interfaces;
 using OngProject.Application.Interfaces.Identity;
 using OngProject.DataAccess.Identity;
 using OngProject.Domain.Entities;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace OngProject.Controllers
 {
@@ -88,6 +91,12 @@ namespace OngProject.Controllers
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
+        #region Documentation
+        [SwaggerOperation(Summary = "Register user",Description = "Register user")]
+        [SwaggerResponse(200, "Success. Returns a username")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        #endregion
         public async Task<ActionResult> Register([FromBody] UserRegistrationRequestDto userRegDto)
         {
             if (ModelState.IsValid)
