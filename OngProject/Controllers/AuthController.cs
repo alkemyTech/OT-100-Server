@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Identity;
-using OngProject.Application.DTOs.Newss;
 using OngProject.Application.Interfaces;
 using OngProject.Application.Interfaces.Identity;
 using OngProject.DataAccess.Identity;

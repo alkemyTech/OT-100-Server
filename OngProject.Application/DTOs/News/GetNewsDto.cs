@@ -1,9 +1,8 @@
 using OngProject.Application.Mappings;
-using OngProject.Domain.Entities;
 
-namespace OngProject.Application.DTOs.Newss
+namespace OngProject.Application.DTOs.News
 {
-    public class GetNewsDto : IMapFrom<News>
+    public class GetNewsDto : IMapFrom<Domain.Entities.News>
     {
         public int Id { get; set; }
         public string Name { get; set; }
