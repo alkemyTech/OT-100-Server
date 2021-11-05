@@ -50,7 +50,7 @@ namespace OngProject.Controllers
 
         // ==================== Post News ==================== //
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Create News",Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Created. Returns the object News created", typeof(CreateNewsDto))]
