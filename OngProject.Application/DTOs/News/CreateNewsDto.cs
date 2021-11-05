@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using OngProject.Application.Mappings;
-using OngProject.Domain.Entities;
 
-namespace OngProject.Application.DTOs.Newss
+namespace OngProject.Application.DTOs.News
 {
-    public class CreateNewsDto : IMapFrom<News>
+    public class CreateNewsDto : IMapFrom<Domain.Entities.News>
     {
         [Required]
         [StringLength(60)]

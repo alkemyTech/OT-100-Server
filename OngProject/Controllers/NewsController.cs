@@ -1,8 +1,7 @@
-﻿using System.Reflection.Metadata;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OngProject.Application.DTOs.Newss;
+using OngProject.Application.DTOs.News;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 

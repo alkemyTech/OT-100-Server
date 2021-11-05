@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Identity;
-using OngProject.Application.DTOs.Newss;
 using OngProject.Application.Interfaces;
 using OngProject.Application.Interfaces.Identity;
 using OngProject.DataAccess.Identity;
@@ -33,7 +32,12 @@ namespace OngProject.Controllers
             _tokenHandlerService = tokenHandlerService;
             _unitOfWork = unitOfWork;
         }
-
+        
+        #region Documentation
+        [SwaggerOperation(Summary = "User Login")]
+        [SwaggerResponse(200, "Logged in. Returns Token")]
+        [SwaggerResponse(400, "Incorrect email or password.")]
+        #endregion
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] UserLoginRequestDto loginDto)
         {
@@ -56,11 +60,14 @@ namespace OngProject.Controllers
 
                 if (isCorrect)
                 {
+                    // If the user is correct, search the role where it belongs
+                    var role = await _userManager.GetRolesAsync(userExist);
+                    
                     var parameters = new TokenParameters
                     {
                         Id = userExist.Id,
                         UserName = userExist.UserName,
-                        PasswordHash = userExist.PasswordHash
+                        Role = role.First()
                     };
 
                     var jwtToken = _tokenHandlerService.GenerateJwtToken(parameters);
@@ -71,23 +78,19 @@ namespace OngProject.Controllers
                         Token = jwtToken
                     });
                 }
-                else
-                {
-                    return BadRequest(new Result
-                    {
-                        Login = false,
-                        Errors = new List<string> {"Incorrect email or password."}
-                    });
-                }
-            }
-            else
-            {
+
                 return BadRequest(new Result
                 {
                     Login = false,
                     Errors = new List<string> {"Incorrect email or password."}
                 });
             }
+
+            return BadRequest(new Result
+            {
+                Login = false,
+                Errors = new List<string> {"Incorrect email or password."}
+            });
         }
 
         [HttpPost("register")]

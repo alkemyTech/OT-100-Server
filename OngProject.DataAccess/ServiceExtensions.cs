@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Claims;
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,7 @@ namespace OngProject.DataAccess
                         ValidateIssuer = false,
                         ValidateAudience = false,
                         RequireExpirationTime = false,
+                        RoleClaimType = ClaimTypes.Role,
                         ValidateLifetime = true
                     };
                 });

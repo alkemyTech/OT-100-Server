@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using OngProject.Application.DTOs.Newss;
+using OngProject.Application.DTOs.News;
 using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;
 using OngProject.Domain.Entities;
