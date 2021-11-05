@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OngProject.Application.Interfaces.IRepositories;
 using OngProject.DataAccess.Context;
+using OngProject.DataAccess.Repositories;
 
 namespace OngProject
 {
@@ -26,8 +28,9 @@ namespace OngProject
 
                     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var context = services.GetRequiredService<ApplicationDbContext>();
 
-                    await ApplicationDbContextSeed.SeedDefaultUserAsync(userManager, roleManager);
+                    await ApplicationDbContextSeed.SeedDefaultUserAsync(userManager, roleManager, context);
                 }
                 catch (Exception e)
                 {
