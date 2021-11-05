@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using OngProject.Application.DTOs.Categories;
-using OngProject.Application.DTOs.Newss;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
