@@ -44,7 +44,7 @@ namespace OngProject.Application.Services
        public async Task<int> CreateNews(CreateNewsDto newsDto)
         {
             var news = _mapper.Map<News>(newsDto);
-
+            news.Type = "News";
             await _unitOfWork.News.Create(news);
             await _unitOfWork.CompleteAsync();
 

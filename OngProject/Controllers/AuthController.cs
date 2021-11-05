@@ -149,8 +149,9 @@ namespace OngProject.Controllers
 
                 await _unitOfWork.Users.Create(user);
                 await _unitOfWork.CompleteAsync();
-
-                return Ok(newUser.Email);
+                
+                return
+                    await Login(new UserLoginRequestDto { Email = userRegDto.Email, Password =  userRegDto.Password});
             }
             else
                 return BadRequest("Error when registering user.");
