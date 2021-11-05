@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using OngProject.Application.Interfaces.IRepositories;
 using OngProject.Domain.Entities;
 
 namespace OngProject.DataAccess.Context

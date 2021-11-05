@@ -6,9 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OngProject.Application.Interfaces.IRepositories;
 using OngProject.DataAccess.Context;
-using OngProject.DataAccess.Repositories;
 
 namespace OngProject
 {
