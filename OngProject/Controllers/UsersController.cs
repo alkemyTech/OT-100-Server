@@ -9,7 +9,7 @@ namespace OngProject.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    [SwaggerTag("Create, post, update and delete Users")]
+    [SwaggerTag("Create, read, update and delete Users")]
     public class UsersController : ControllerBase
     {
         private readonly UserService _service;
@@ -20,7 +20,7 @@ namespace OngProject.Controllers
         }
         
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "List of all USers", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns a list of existing Organizations", typeof(GetUserDto))]
@@ -34,7 +34,7 @@ namespace OngProject.Controllers
         }
         
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Get a User by ID", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns an existing User", typeof(GetUserDetailsDto))]
@@ -63,7 +63,7 @@ namespace OngProject.Controllers
 
         
         [HttpDelete("{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Soft Delete of an existing User", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns nothing")]
