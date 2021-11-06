@@ -34,7 +34,7 @@ namespace OngProject
                     
 
                     await ApplicationDbContextSeed.SeedDefaultUserAsync(userManager, roleManager, context);
-                    await ApplicationDbContextSeed.SeedDefaultOrganizationAsync(context);
+                    await ApplicationDbContextSeed.SeedDefaultActivityAsync(context);
 
                 }
                 catch (Exception e)
