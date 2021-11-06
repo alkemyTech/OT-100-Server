@@ -11,6 +11,8 @@ using OngProject.Application.Interfaces.Identity;
 using OngProject.DataAccess.Identity;
 using OngProject.Domain.Entities;
 using Swashbuckle.AspNetCore.Annotations;
+using OngProject.Services;
+using System.Security.Claims;
 
 namespace OngProject.Controllers
 {
@@ -22,6 +24,7 @@ namespace OngProject.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenHandlerService _tokenHandlerService;
         private readonly IUnitOfWork _unitOfWork;
+       
 
         public AuthController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager,
             ITokenHandlerService tokenHandlerService,
@@ -156,5 +159,19 @@ namespace OngProject.Controllers
             else
                 return BadRequest("Error when registering user.");
         }
+
+        [HttpGet("me")]
+        public ActionResult<CurrentUserService> Me(){
+            var c = new CurrentUserService();
+           
+            var claimsIdentity = this.User.Identity as ClaimsIdentity;
+            c.userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            c.userName = claimsIdentity.FindFirst(ClaimTypes.Email)?.Value;
+            c.userRole = claimsIdentity.FindFirst(ClaimTypes.Role)?.Value;
+           
+            return c;
+        }
+
+
     }
 }
