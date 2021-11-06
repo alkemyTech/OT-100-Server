@@ -32,7 +32,15 @@ namespace OngProject.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create(CreateActivityDto activityDto)
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Activity", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Created. Returns the object News created", typeof(CreateActivityDto))]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        #endregion
+        public async Task<ActionResult<int>> Create([SwaggerParameter("Object parameters")] CreateActivityDto activityDto)
         {
             return await _service.CreateActivity(activityDto);
         }
