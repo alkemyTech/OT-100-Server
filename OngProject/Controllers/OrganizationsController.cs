@@ -9,7 +9,7 @@ namespace OngProject.Controllers
 {
     [ApiController]
     [Route("api/organizations")]
-    [SwaggerTag("Create, post, update and delete Organizations")]
+    [SwaggerTag("Create, read, update and delete Organizations")]
     public class OrganizationsController : ControllerBase
     {
         private readonly OrganizationService _service;
@@ -33,7 +33,7 @@ namespace OngProject.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Get details of the organization by ID", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns the Organization data.", typeof(GetOrganizationDetailsDto))]
@@ -60,7 +60,7 @@ namespace OngProject.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Creates a new Organization", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns nothing")]
@@ -74,7 +74,7 @@ namespace OngProject.Controllers
         }
 
         [HttpPut("public{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Modifies an existing Organization", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns nothing")]
@@ -89,7 +89,7 @@ namespace OngProject.Controllers
         }
 
         [HttpDelete("{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Soft Delete an existing Organization", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns nothing")]
