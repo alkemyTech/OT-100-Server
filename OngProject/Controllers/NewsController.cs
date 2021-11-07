@@ -65,7 +65,7 @@ namespace OngProject.Controllers
 
         // ==================== Update News ==================== //
         [HttpPut("{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Modifies an existing News",Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Updated. Returns the object News updated", typeof(GetNewsDetailsDto))]
@@ -82,8 +82,8 @@ namespace OngProject.Controllers
 
         // ==================== Soft Delete News ==================== //
         [HttpDelete("{id}")]
-        [AllowAnonymous]
-         #region Documentation
+        [Authorize(Roles = "Admin")]
+        #region Documentation
         [SwaggerOperation(Summary = "Soft delete an existing News",Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Deleted. Returns nothing")]
         [SwaggerResponse(400, "BadRequest. Object not deleted, try again")]
