@@ -45,7 +45,7 @@ namespace OngProject.DataAccess
                         IssuerSigningKey = new SymmetricSecurityKey(key),
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        RequireExpirationTime = false,
+                        RequireExpirationTime = true,
                         RoleClaimType = ClaimTypes.Role,
                         ValidateLifetime = true
                     };
