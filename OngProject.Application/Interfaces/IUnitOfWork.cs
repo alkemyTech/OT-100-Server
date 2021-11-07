@@ -10,8 +10,7 @@ namespace OngProject.Application.Interfaces
         INewsRepository News { get; }
         ICategoryRepository Categories { get; }
         IOrganizationRepository Organizations { get; }
-        IUserRepository Users { get; }
-        IRoleRepository Roles { get; }
+        IUserDetailsRepository UsersDetails { get; }
         ITestimonyRepository Testimonials { get; }
 
         Task CompleteAsync();

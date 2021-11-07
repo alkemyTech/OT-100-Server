@@ -1,7 +1,3 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
-using OngProject.Application.Interfaces;
-
 namespace OngProject.Services{
     public class CurrentUserService
     {

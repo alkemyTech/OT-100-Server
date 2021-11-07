@@ -4,11 +4,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OngProject.DataAccess.Identity;
 using OngProject.Domain.Entities;
 
 namespace OngProject.DataAccess.Context
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -19,8 +20,7 @@ namespace OngProject.DataAccess.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Activity> Activities { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserDetails> UsersDetails { get; set; }
         public DbSet<Testimony> Testimonials { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

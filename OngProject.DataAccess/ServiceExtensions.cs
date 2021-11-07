@@ -51,10 +51,11 @@ namespace OngProject.DataAccess
                     };
                 });
 
-            services.AddDefaultIdentity<IdentityUser>(ops => ops.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(ops => ops.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             
+            services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<ITokenHandlerService, TokenHandlerService>();
 
             #endregion

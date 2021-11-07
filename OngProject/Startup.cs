@@ -5,10 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OngProject.Application;
-using OngProject.Application.Interfaces;
 using OngProject.DataAccess;
 using OngProject.Filters;
-using OngProject.Services;
 
 namespace OngProject
 {

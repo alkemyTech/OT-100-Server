@@ -2,9 +2,9 @@
 using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
 
-namespace OngProject.Application.DTOs.Users
+namespace OngProject.Application.DTOs.UsersDetails
 {
-    public class UpdateUserDto : IMapFrom<User>
+    public class UpdateUserDetailsDto : IMapFrom<UserDetails>
     {
         [Required]
         [StringLength(60)]
@@ -13,13 +13,5 @@ namespace OngProject.Application.DTOs.Users
         [Required]
         [StringLength(60)]
         public string LastName { get; set; }
-
-        [Required]
-        [StringLength(60)]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(24)]
-        public string Password { get; set; }
     }
 }

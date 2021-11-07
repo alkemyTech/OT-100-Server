@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using OngProject.Application.DTOs.Users;
+using OngProject.Application.DTOs.UsersDetails;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 using Microsoft.AspNetCore.Authorization;
@@ -11,27 +11,27 @@ namespace OngProject.Controllers
     [ApiController]
     [Route("api/users")]
     [SwaggerTag("Create, read, update and delete Users")]
-    public class UsersController : ControllerBase
+    public class UsersDetailsController : ControllerBase
     {
-        private readonly UserService _service;
+        private readonly UserDetailsService _detailsService;
 
-        public UsersController(UserService service)
+        public UsersDetailsController(UserDetailsService detailsService)
         {
-            _service = service;
+            _detailsService = detailsService;
         }
         
         [HttpGet]
         [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "List of all USers", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Success. Returns a list of existing Organizations", typeof(GetUserDto))]
+        [SwaggerResponse(200, "Success. Returns a list of existing Organizations", typeof(GetUsersDetailsDto))]
         [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
         [SwaggerResponse(403, "Unauthorized user")]
         #endregion
         public async Task<ActionResult> GetAll()
         {
-            return Ok(await _service.GetUsers());
+            return Ok(await _detailsService.GetUsers());
         }
         
         [HttpGet("{id}")]
@@ -45,27 +45,21 @@ namespace OngProject.Controllers
         #endregion
         public async Task<ActionResult<GetUserDetailsDto>> GetById([SwaggerParameter("ID of an existing User")] int id)
         {
-            return await _service.GetUserDetails(id);
+            return await _detailsService.GetUserDetails(id);
         }
         
-        [HttpPost]
-        public async Task<ActionResult<int>> Create(CreateUserDto userDto)
-        {
-            return await _service.CreateUser(userDto);
-        }
-        
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Update([SwaggerParameter("ID of an existing User")] int id, CreateUserDto userDto)
-        {
-            await _service.UpdateUser(id, userDto);
-
-            return NoContent();
-        }
-
+        #region Documentation
+        [SwaggerOperation(Summary = "Update personal data of the user.")]
+        [SwaggerResponse(204, "Updated.")]
+        [SwaggerResponse(400, "Something went wrong, try again.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        #endregion
+        [Authorize(Roles = "User, Admin")]
         [HttpPatch("{id}")]
-        public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<UpdateUserDto> patchDocument)
+        public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<UpdateUserDetailsDto> patchDocument)
         {
-            await _service.PatchUser(id, patchDocument);
+            await _detailsService.PatchUser(id, patchDocument);
 
             return NoContent();
         }
@@ -81,7 +75,7 @@ namespace OngProject.Controllers
         #endregion
         public async Task<ActionResult> Delete([SwaggerParameter("ID of an existing User")] int id)
         {
-            await _service.SoftDeleteUsers(id);
+            await _detailsService.SoftDeleteUsers(id);
 
             return NoContent();
         }

@@ -6,11 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OngProject.Application.DTOs.Organizations;
-using OngProject.Application.Interfaces.IRepositories;
-using OngProject.Application.Services;
 using OngProject.DataAccess.Context;
-using OngProject.Domain.Entities;
+using OngProject.DataAccess.Identity;
 
 namespace OngProject
 {
@@ -28,11 +25,10 @@ namespace OngProject
                 {
                     services.GetRequiredService<ApplicationDbContext>().Database.Migrate();
 
-                    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     
-
                     await ApplicationDbContextSeed.SeedDefaultUserAsync(userManager, roleManager, context);
                     await ApplicationDbContextSeed.SeedDefaultActivityAsync(context);
 
@@ -40,7 +36,6 @@ namespace OngProject
                 catch (Exception e)
                 {
                     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
                     logger.LogError(e, "An error occurred while migrating or seeding the database.");
                     throw;
                 }

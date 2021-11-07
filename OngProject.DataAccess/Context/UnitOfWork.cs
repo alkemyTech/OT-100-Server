@@ -22,8 +22,7 @@ namespace OngProject.DataAccess.Context
             News = new NewsRepository(_dbContext, _logger);
             Categories = new CategoryRepository(_dbContext, _logger);
             Organizations = new OrganizationRepository(_dbContext, _logger);
-            Users = new UserRepository(_dbContext, _logger);
-            Roles = new RoleRepository(_dbContext, _logger);
+            UsersDetails = new UserDetailsRepository(_dbContext, _logger);
             Testimonials = new TestimonyRepository(_dbContext, _logger);
         }
         
@@ -33,8 +32,7 @@ namespace OngProject.DataAccess.Context
         public INewsRepository News { get; }
         public ICategoryRepository Categories { get; }
         public IOrganizationRepository Organizations { get; }
-        public IUserRepository Users { get; }
-        public IRoleRepository Roles { get; }
+        public IUserDetailsRepository UsersDetails { get; }
         public ITestimonyRepository Testimonials { get; }
 
 
