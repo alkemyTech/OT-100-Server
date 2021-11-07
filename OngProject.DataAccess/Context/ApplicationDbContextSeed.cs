@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using OngProject.Domain.Entities;
 
 namespace OngProject.DataAccess.Context
@@ -13,9 +14,13 @@ namespace OngProject.DataAccess.Context
             // Create roles
             var adminRole = new IdentityRole("Admin");
             var userRole = new IdentityRole("User");
-
-            await roleManager.CreateAsync(adminRole);
-            await roleManager.CreateAsync(userRole);
+            
+            if(await roleManager.Roles.AllAsync(r => r.Name != adminRole.Name))
+                await roleManager.CreateAsync(adminRole);
+            
+            if(await roleManager.Roles.AllAsync(r => r.Name != userRole.Name))
+                await roleManager.CreateAsync(userRole);
+            
             
             context.Roles.Add(new Role
                 {Description = userRole.Name, Name = userRole.Name, IdentityId = new Guid(userRole.Id)});
@@ -26,8 +31,11 @@ namespace OngProject.DataAccess.Context
             // Create Admin
             var admin = new IdentityUser {UserName = "admin@localhost", Email = "admin@localhost"};
 
-            await userManager.CreateAsync(admin, password: "Abc123.");
-            await userManager.AddToRoleAsync(admin, adminRole.Name);
+            if (await userManager.Users.AllAsync(u => u.UserName != admin.UserName))
+            {
+                await userManager.CreateAsync(admin, password: "Abc123.");
+                await userManager.AddToRoleAsync(admin, adminRole.Name);
+            }
         }
     }
 }

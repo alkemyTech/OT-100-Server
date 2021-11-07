@@ -25,7 +25,8 @@ namespace OngProject
             services.AddApplicationLayer();
 
             services.AddControllers(ops => 
-                ops.Filters.Add<ApiExceptionFilterAttribute>());
+                    ops.Filters.Add<ApiExceptionFilterAttribute>())
+                .AddNewtonsoftJson();
             
             services.AddSwaggerGen(c =>
             {

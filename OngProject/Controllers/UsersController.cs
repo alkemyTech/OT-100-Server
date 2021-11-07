@@ -4,6 +4,7 @@ using OngProject.Application.DTOs.Users;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace OngProject.Controllers
 {
@@ -61,7 +62,14 @@ namespace OngProject.Controllers
             return NoContent();
         }
 
-        
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<UpdateUserDto> patchDocument)
+        {
+            await _service.PatchUser(id, patchDocument);
+
+            return NoContent();
+        }
+
         [HttpDelete("{id}")]
         [AllowAnonymous]
         #region Documentation

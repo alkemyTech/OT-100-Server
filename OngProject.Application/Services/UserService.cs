@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.JsonPatch;
 using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;
 
@@ -59,6 +60,21 @@ namespace OngProject.Application.Services
 
             user.Id = id;
             await _unitOfWork.Users.Update(_mapper.Map(usersDto, user));
+            await _unitOfWork.CompleteAsync();
+        }
+
+        public async Task PatchUser(int id, JsonPatchDocument<UpdateUserDto> patchDocument)
+        {
+            var user = await _unitOfWork.Users.GetById(id);
+            
+            if (user is null)
+                throw new NotFoundException(nameof(User), id);
+
+            var userDto = _mapper.Map<UpdateUserDto>(user);
+            
+            patchDocument.ApplyTo(userDto);
+            
+            await _unitOfWork.Users.Update(_mapper.Map(userDto, user));
             await _unitOfWork.CompleteAsync();
         }
 
