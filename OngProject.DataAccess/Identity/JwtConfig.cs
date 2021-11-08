@@ -1,4 +1,8 @@
 ﻿namespace OngProject.DataAccess.Identity
 {
-    public record JwtConfig(string Secret);
+    public class JwtConfig
+    {
+        public string Secret { get; init; }
+        public int AccessTokenExpiration { get; init; }
+    }
 }

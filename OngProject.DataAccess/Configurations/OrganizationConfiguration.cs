@@ -19,7 +19,7 @@ namespace OngProject.DataAccess.Configurations
                 .HasMaxLength(10);
             builder.Property(m => m.Email)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
             builder.Property(m => m.WelcomeText)
                 .IsRequired()
                 .HasMaxLength(200);

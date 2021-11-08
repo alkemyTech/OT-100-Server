@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Activities;
 using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;

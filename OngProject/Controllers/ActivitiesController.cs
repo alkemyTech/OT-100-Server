@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Activities;
 using OngProject.Application.Services;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace OngProject.Controllers
 {
@@ -30,12 +32,28 @@ namespace OngProject.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create(CreateActivityDto activityDto)
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Activity", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Created. Returns the object News created", typeof(CreateActivityDto))]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        #endregion
+        public async Task<ActionResult<int>> Create([SwaggerParameter("Object parameters")] CreateActivityDto activityDto)
         {
             return await _service.CreateActivity(activityDto);
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Update a Activity",Description = "Require admin privileges")]
+        [SwaggerResponse(200, "Success. No return.")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user or wrong jwt token")]
+        #endregion
         public async Task<ActionResult> Update(int id, CreateActivityDto activityDto)
         {
             await _service.UpdateActivity(id, activityDto);

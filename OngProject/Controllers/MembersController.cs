@@ -16,7 +16,7 @@ namespace OngProject.Controllers
         {
             _service = service;
         }
-
+        
         [HttpGet]
         public async Task<ActionResult<List<GetMembersDto>>> GetAll()
         {

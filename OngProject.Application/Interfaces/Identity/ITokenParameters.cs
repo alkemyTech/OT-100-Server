@@ -4,6 +4,6 @@
     {
         string Id { get; init; }
         string UserName { get; init; }
-        string PasswordHash { get; init; }
+        string Role { get; init; }
     }
 }

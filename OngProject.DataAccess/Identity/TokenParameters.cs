@@ -6,6 +6,6 @@ namespace OngProject.DataAccess.Identity
     {
         public string Id { get; init; }
         public string UserName { get; init; }
-        public string PasswordHash { get; init; }
+        public string Role { get; init; }
     }
 }

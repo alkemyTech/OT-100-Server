@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Claims;
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using OngProject.Application.Interfaces;
+using OngProject.Application.Interfaces.Identity;
 using OngProject.DataAccess.Context;
 using OngProject.DataAccess.Identity;
 
@@ -43,13 +45,18 @@ namespace OngProject.DataAccess
                         IssuerSigningKey = new SymmetricSecurityKey(key),
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        RequireExpirationTime = false,
+                        RequireExpirationTime = true,
+                        RoleClaimType = ClaimTypes.Role,
                         ValidateLifetime = true
                     };
                 });
 
-            services.AddDefaultIdentity<IdentityUser>(ops => ops.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(ops => ops.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+            services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<ITokenHandlerService, TokenHandlerService>();
 
             #endregion
 

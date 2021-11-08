@@ -24,12 +24,16 @@ namespace OngProject
             services.AddDataAccessLayer(Configuration);
             services.AddApplicationLayer();
 
+           
+
             services.AddControllers(ops => 
-                ops.Filters.Add<ApiExceptionFilterAttribute>());
+                    ops.Filters.Add<ApiExceptionFilterAttribute>())
+                .AddNewtonsoftJson();
             
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OngProject", Version = "v1" });
+                c.EnableAnnotations();
                 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

@@ -2,7 +2,7 @@
 
 namespace OngProject.Application.DTOs.Identity
 {
-    public class UserLoginRequestDto
+    public class AuthRequestDto
     {
         [Required]
         [DataType(DataType.EmailAddress)]

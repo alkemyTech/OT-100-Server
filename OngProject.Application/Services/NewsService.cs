@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using OngProject.Application.DTOs.Newss;
+using OngProject.Application.DTOs.News;
 using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;
 using OngProject.Domain.Entities;
@@ -45,7 +44,7 @@ namespace OngProject.Application.Services
        public async Task<int> CreateNews(CreateNewsDto newsDto)
         {
             var news = _mapper.Map<News>(newsDto);
-
+            news.Type = "News";
             await _unitOfWork.News.Create(news);
             await _unitOfWork.CompleteAsync();
 
@@ -53,7 +52,7 @@ namespace OngProject.Application.Services
         }
 
         // ==================== Update News ==================== //
-      public async Task UpdateNews(int id, CreateNewsDto newsDto)
+      public async Task<GetNewsDetailsDto> UpdateNews(int id, CreateNewsDto newsDto)
         {
             var news = await _unitOfWork.News.GetById(id);
             
@@ -63,6 +62,9 @@ namespace OngProject.Application.Services
             news.Id = id;
             await _unitOfWork.News.Update(_mapper.Map(newsDto, news));
             await _unitOfWork.CompleteAsync();
+
+            return _mapper.Map<GetNewsDetailsDto>(news);
+
         }
 
         // ==================== Soft Delete News ==================== //

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Identity;
 using OngProject.Application.Interfaces.Identity;
-using OngProject.DataAccess.Identity;
+using Swashbuckle.AspNetCore.Annotations;
+using OngProject.Services;
+using System.Security.Claims;
 
 namespace OngProject.Controllers
 {
@@ -12,69 +12,47 @@ namespace OngProject.Controllers
     [Route("api/auth")]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly ITokenHandlerService _tokenHandlerService;
+        private readonly IIdentityService _identityService;
 
-        public AuthController(UserManager<IdentityUser> userManager, ITokenHandlerService tokenHandlerService)
+        public AuthController(IIdentityService identityService)
         {
-            _userManager = userManager;
-            _tokenHandlerService = tokenHandlerService;
+            _identityService = identityService;
         }
-
+        
+        [HttpPost("register")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Register user",Description = "Register user")]
+        [SwaggerResponse(200, "Success. Returns a username")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        #endregion
+        public async Task<ActionResult<string>> Register([FromBody] AuthRequestDto requestDto)
+        {
+            return await _identityService.Register(requestDto);
+        }
+        
+        #region Documentation
+        [SwaggerOperation(Summary = "User Login")]
+        [SwaggerResponse(200, "Logged in. Returns Token")]
+        [SwaggerResponse(400, "Incorrect email or password.")]
+        #endregion
         [HttpPost("login")]
-        public async Task<ActionResult> Login([FromBody] UserLoginRequestDto loginDto)
+        public async Task<ActionResult<AuthResponseDto>> Login([FromBody] AuthRequestDto requestDto)
         {
-            if (ModelState.IsValid)
-            {
-                // Check if email exist
-                var userExist = await _userManager.FindByEmailAsync(loginDto.Email);
-
-                if (userExist is null)
-                {
-                    return BadRequest(new Result
-                    {
-                        Login = false,
-                        Errors = new List<string> {"Incorrect email or password."}
-                    });
-                }
-                
-                // Check if the user has a valid password
-                var isCorrect = await _userManager.CheckPasswordAsync(userExist, loginDto.Password);
-
-                if (isCorrect)
-                {
-                    var parameters = new TokenParameters
-                    {
-                        Id = userExist.Id,
-                        UserName = userExist.UserName,
-                        PasswordHash = userExist.PasswordHash
-                    };
-
-                    var jwtToken = _tokenHandlerService.GenerateJwtToken(parameters);
-
-                    return Ok(new Result
-                    {
-                        Login = true,
-                        Token = jwtToken
-                    });
-                }
-                else
-                {
-                    return BadRequest(new Result
-                    {
-                        Login = false,
-                        Errors = new List<string> {"Incorrect email or password."}
-                    });
-                }
-            }
-            else
-            {
-                return BadRequest(new Result
-                {
-                    Login = false,
-                    Errors = new List<string> {"Incorrect email or password."}
-                });
-            }
+            return await _identityService.Login(requestDto);
         }
+
+        [HttpGet("me")]
+        public ActionResult<CurrentUserService> Me(){
+            var c = new CurrentUserService();
+           
+            var claimsIdentity = this.User.Identity as ClaimsIdentity;
+            c.userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            c.userName = claimsIdentity.FindFirst(ClaimTypes.Email)?.Value;
+            c.userRole = claimsIdentity.FindFirst(ClaimTypes.Role)?.Value;
+           
+            return c;
+        }
+
+
     }
 }

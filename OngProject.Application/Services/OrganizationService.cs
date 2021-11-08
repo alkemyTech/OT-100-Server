@@ -40,6 +40,16 @@ namespace OngProject.Application.Services
             return _mapper.Map<GetOrganizationDetailsDto>(organization);
         }
 
+        public async Task<GetOrganizationPublicDto> GetByIdPublic(int id)
+        {
+            var organization = await _unitOfWork.Organizations.GetById(id);
+
+            if (organization is null)// || organization.DeletedAt != null)
+                throw new NotFoundException(nameof(Organization), id);
+
+            return _mapper.Map<GetOrganizationPublicDto>(organization);
+        }
+
         public async Task<GetOrganizationsDto> CreateOrganization(CreateOrganizationDto createOrganizationDto)
         {
             var organization = _mapper.Map<Organization>(createOrganizationDto);
@@ -50,7 +60,7 @@ namespace OngProject.Application.Services
             return _mapper.Map<GetOrganizationsDto>(organization);
         }
 
-        public async Task Update(int id, CreateOrganizationDto updateOrganization)
+        public async Task Update(int id, UpdateOrganizationPublicDto updateOrganization)
         {
             var organization = await _unitOfWork.Organizations.GetById(id);
 
@@ -59,7 +69,6 @@ namespace OngProject.Application.Services
 
             await _unitOfWork.Organizations.Update(_mapper.Map(updateOrganization, organization));
             await _unitOfWork.CompleteAsync();
-
         }
 
         public async Task Delete(int id)

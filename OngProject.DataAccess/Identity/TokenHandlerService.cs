@@ -27,11 +27,11 @@ namespace OngProject.DataAccess.Identity
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("Id", parameters.Id),
-                    new Claim(JwtRegisteredClaimNames.Sub, parameters.UserName),
-                    new Claim(JwtRegisteredClaimNames.Email, parameters.UserName)
+                    new Claim(JwtRegisteredClaimNames.NameId, parameters.Id),
+                    new Claim(JwtRegisteredClaimNames.Email, parameters.UserName),
+                    new Claim(ClaimTypes.Role, parameters.Role)
                 }),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddMinutes(_jwtConfig.AccessTokenExpiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };
