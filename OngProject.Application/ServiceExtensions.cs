@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using OngProject.Application.Interfaces.Identity;
 using OngProject.Application.Services;
 
 namespace OngProject.Application
@@ -15,8 +16,7 @@ namespace OngProject.Application
             services.AddScoped<NewsService>();
             services.AddScoped<CategoryService>();
             services.AddScoped<OrganizationService>();
-            services.AddScoped<UserService>();
-            services.AddScoped<RoleService>();
+            services.AddScoped<UserDetailsService>();
             services.AddScoped<TestimonyService>();
 
             return services;

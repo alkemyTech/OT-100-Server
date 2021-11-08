@@ -31,7 +31,7 @@ namespace OngProject.DataAccess.Identity
                     new Claim(JwtRegisteredClaimNames.Email, parameters.UserName),
                     new Claim(ClaimTypes.Role, parameters.Role)
                 }),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddMinutes(_jwtConfig.AccessTokenExpiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };

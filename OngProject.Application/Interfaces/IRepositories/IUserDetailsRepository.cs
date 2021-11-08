@@ -2,7 +2,7 @@
 
 namespace OngProject.Application.Interfaces.IRepositories
 {
-    public interface IUserRepository: IGenericRepository<User>
+    public interface IUserDetailsRepository: IGenericRepository<UserDetails>
     {
     }
 }

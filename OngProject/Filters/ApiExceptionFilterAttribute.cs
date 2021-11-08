@@ -16,7 +16,8 @@ namespace OngProject.Filters
             _exceptionHandlers = new Dictionary<Type, Action<ExceptionContext>>()
             {
                 { typeof(NotFoundException), HandleNotFoundException },
-                { typeof(ForbiddenAccessException), HandleForbiddenAccessException }
+                { typeof(ForbiddenAccessException), HandleForbiddenAccessException },
+                { typeof(BadRequestException), HandleBadRequestException }
             };
         }
 
@@ -81,7 +82,7 @@ namespace OngProject.Filters
             var details = new ProblemDetails
             {
                 Title = "The specified resource was not found.",
-                Detail = exception.Message,
+                Detail = exception?.Message,
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4"
             };
 
@@ -103,6 +104,22 @@ namespace OngProject.Filters
             {
                 StatusCode = StatusCodes.Status403Forbidden
             };
+            context.ExceptionHandled = true;
+        }
+        
+        // StatusCode = 400
+        private void HandleBadRequestException(ExceptionContext context)
+        {
+            var exception = context.Exception as BadRequestException;
+
+            var details = new ProblemDetails
+            {
+                Title = "Bad Request",
+                Detail = exception?.Message,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+            };
+
+            context.Result = new BadRequestObjectResult(details);
             context.ExceptionHandled = true;
         }
     }

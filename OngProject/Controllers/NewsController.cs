@@ -36,7 +36,7 @@ namespace OngProject.Controllers
 
         // ==================== Get By Id ==================== //
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Get News details by id",Description = "Unnecessary admin privileges")]
         [SwaggerResponse(200, "Success. Returns the News details", typeof(GetNewsDetailsDto))]
