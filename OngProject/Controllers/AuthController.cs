@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Identity;
 using OngProject.Application.Interfaces.Identity;
 using Swashbuckle.AspNetCore.Annotations;
-using OngProject.Services;
-using System.Security.Claims;
+using OngProject.Application.DTOs;
 
 namespace OngProject.Controllers
 {
@@ -42,15 +41,9 @@ namespace OngProject.Controllers
         }
 
         [HttpGet("me")]
-        public ActionResult<CurrentUserService> Me(){
-            var c = new CurrentUserService();
-           
-            var claimsIdentity = this.User.Identity as ClaimsIdentity;
-            c.userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            c.userName = claimsIdentity.FindFirst(ClaimTypes.Email)?.Value;
-            c.userRole = claimsIdentity.FindFirst(ClaimTypes.Role)?.Value;
-           
-            return c;
+        public async Task<ActionResult<CurrentUserDto>> Me(){
+            
+           return await _identityService.Me();
         }
 
 
