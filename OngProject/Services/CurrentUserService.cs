@@ -1,9 +1,20 @@
-namespace OngProject.Services{
-    public class CurrentUserService
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using OngProject.Application.Interfaces.Identity;
+
+namespace OngProject.Services
+{
+    public class CurrentUserService : ICurrentUserService
     {
-        public string userId {get; set;}
-        public string userName{get; set;}
-        public string userRole {get; set;}
-        
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public CurrentUserService(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        public string userId => _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
     }
 }
