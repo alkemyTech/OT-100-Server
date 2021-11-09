@@ -24,7 +24,7 @@ namespace OngProject.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetMemberDetailsDto>> GetById(int id)
+        public async Task<ActionResult<GetMembersDto>> GetById(int id)
         {
             return await _service.GetMemberDetails(id);
         }

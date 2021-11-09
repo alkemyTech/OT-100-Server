@@ -12,17 +12,8 @@ namespace OngProject.DataAccess.Configurations
             builder.Property(m => m.Name)
                 .IsRequired()
                 .HasMaxLength(60);
-            builder.Property(m => m.FacebookUrl)
-                .HasMaxLength(120);
-            builder.Property(m => m.InstagramUrl)
-                .HasMaxLength(120);
-            builder.Property(m => m.LinkedInUrl)
-                .HasMaxLength(120);
             builder.Property(m => m.Image)
-                .IsRequired()
                 .HasMaxLength(240);
-            builder.Property(m => m.Description)
-                .HasMaxLength(1200);
             builder.Property(m => m.CreatedAt)
                 .HasColumnType("SMALLDATETIME");
             builder.Property(m => m.UpdatedAt)
