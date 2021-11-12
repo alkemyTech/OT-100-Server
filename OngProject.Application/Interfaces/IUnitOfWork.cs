@@ -12,6 +12,7 @@ namespace OngProject.Application.Interfaces
         IOrganizationRepository Organizations { get; }
         IUserDetailsRepository UsersDetails { get; }
         ITestimonyRepository Testimonials { get; }
+        ISlideRepository Slides { get; }
 
         Task CompleteAsync();
     }
