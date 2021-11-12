@@ -29,5 +29,14 @@ namespace OngProject.Application.DTOs.Organizations
 
         [StringLength(1500)]
         public string AboutUsText { get; set; }
+
+        [StringLength(200)]
+        public string InstagramUrl { get; set; }
+
+        [StringLength(200)]
+        public string FacebookUrl { get; set; }
+
+        [StringLength(200)]
+        public string TwitterUrl { get; set; }
     }
 }

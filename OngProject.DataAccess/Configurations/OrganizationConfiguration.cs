@@ -31,6 +31,12 @@ namespace OngProject.DataAccess.Configurations
                 .HasMaxLength(120);
             builder.Property(m => m.AboutUsText)
                 .HasMaxLength(1200);
+            builder.Property(m => m.InstagramUrl)
+            .HasMaxLength(200);
+            builder.Property(m => m.FacebookUrl)
+            .HasMaxLength(200);
+            builder.Property(m => m.TwitterUrl)
+            .HasMaxLength(200);
             builder.Property(m => m.CreatedAt)
                 .HasColumnType("SMALLDATETIME");
             builder.Property(m => m.UpdatedAt)

@@ -4,16 +4,17 @@ using OngProject.Domain.Entities;
 
 namespace OngProject.DataAccess.Configurations
 {
-    public class MemberConfiguration : IEntityTypeConfiguration<Member>
+    public class SlideConfiguration: IEntityTypeConfiguration<Slide>
     {
-        public void Configure(EntityTypeBuilder<Member> builder)
+        public void Configure(EntityTypeBuilder<Slide> builder)
         {
             builder.HasKey(m => m.Id);
-            builder.Property(m => m.Name)
+            builder.Property(m => m.ImageUrl);
+            builder.Property(m => m.Text)
                 .IsRequired()
-                .HasMaxLength(60);
-            builder.Property(m => m.Image)
-                .HasMaxLength(240);
+                .HasMaxLength(8000);
+            builder.Property(m => m.Order)
+                .IsRequired();
             builder.Property(m => m.CreatedAt)
                 .HasColumnType("SMALLDATETIME");
             builder.Property(m => m.UpdatedAt)

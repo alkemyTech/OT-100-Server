@@ -30,14 +30,14 @@ namespace OngProject.Application.Services
                 .ProjectToList<GetMembersDto>(_mapper.ConfigurationProvider);
         }
 
-        public async Task<GetMemberDetailsDto> GetMemberDetails(int id)
+        public async Task<GetMembersDto> GetMemberDetails(int id)
         {
             var member = await _unitOfWork.Members.GetById(id);
 
             if (member is null)
                 throw new NotFoundException(nameof(Member), id);
 
-            return _mapper.Map<GetMemberDetailsDto>(member);
+            return _mapper.Map<GetMembersDto>(member);
         }
 
         public async Task<int> CreateMember(CreateMemberDto memberDto)

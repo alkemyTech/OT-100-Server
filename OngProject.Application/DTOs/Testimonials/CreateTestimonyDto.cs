@@ -12,7 +12,8 @@ namespace OngProject.Application.DTOs.Testimonials
 
         //[DataType(DataType.Upload)]
         public string Image { get; set; }
-
+        
+        [Required]
         [StringLength(1200)]
         public string Content { get; set; }
     }
