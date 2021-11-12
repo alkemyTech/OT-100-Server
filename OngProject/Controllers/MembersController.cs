@@ -40,6 +40,14 @@ namespace OngProject.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User, Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Member.",Description = "Requires user privileges.")]
+        [SwaggerResponse(200, "Created. Returns id of the created member.", typeof(int))]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        #endregion
         public async Task<ActionResult<int>> Create(CreateMemberDto memberDto)
         {
             return await _service.CreateMember(memberDto);

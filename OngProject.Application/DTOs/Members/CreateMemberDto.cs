@@ -10,7 +10,7 @@ namespace OngProject.Application.DTOs.Members
         [StringLength(60)]
         public string Name { get; set; }
         
-        [DataType(DataType.Upload)]
+        //[DataType(DataType.Upload)]
         public string Image { get; set; }
         
     }
