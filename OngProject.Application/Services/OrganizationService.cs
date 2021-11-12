@@ -50,6 +50,8 @@ namespace OngProject.Application.Services
             return _mapper.Map<GetOrganizationPublicDto>(organization);
         }
 
+       
+
         public async Task<GetOrganizationsDto> CreateOrganization(CreateOrganizationDto createOrganizationDto)
         {
             var organization = _mapper.Map<Organization>(createOrganizationDto);
