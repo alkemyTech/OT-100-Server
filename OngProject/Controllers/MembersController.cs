@@ -62,6 +62,14 @@ namespace OngProject.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Delete an existing Member", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns nothing")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        #endregion
         public async Task<ActionResult> Delete(int id)
         {
             await _service.SoftDeleteMember(id);
