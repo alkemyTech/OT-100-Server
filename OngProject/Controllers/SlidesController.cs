@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Slides;
@@ -18,7 +19,7 @@ namespace OngProject.Controllers
             _service = service;
         }
 
-        
+
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
@@ -33,7 +34,7 @@ namespace OngProject.Controllers
         {
             return await _service.GetSlideDetailsDto(id);
         }
-        
+
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
@@ -50,6 +51,36 @@ namespace OngProject.Controllers
 
             return NoContent();
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "List of all Slides", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns a list of existing Slides", typeof(GetSlidesDto))]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        #endregion
+        public async Task<ActionResult<List<GetSlidesDto>>> GetAll()
+        {
+            return await _service.GetSlides();
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Delete an existing Slide", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns nothing")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        #endregion
+        public async Task<ActionResult> Delete(int id)
+        {
+            await _service.SoftDeleteSlide(id);
+
+            return NoContent();
+        }
     }
-        
+
 }
