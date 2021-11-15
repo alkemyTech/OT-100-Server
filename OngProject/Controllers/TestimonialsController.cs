@@ -30,8 +30,16 @@ namespace OngProject.Controllers
         {
             return await _service.GetTestimonyById(id);
         }
-
+        
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Testimony.",Description = "Requires admin privileges.")]
+        [SwaggerResponse(200, "Created. Returns id of the created testimony.", typeof(int))]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        #endregion
         public async Task<ActionResult<int>> Create(CreateTestimonyDto activityDto)
         {
             return await _service.CreateTestimony(activityDto);
@@ -53,6 +61,14 @@ namespace OngProject.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Delete an existing Testimony", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Succes. Returns nothing")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        #endregion
         public async Task<ActionResult> Delete(int id)
         {
             await _service.SoftDeleteTestimony(id);

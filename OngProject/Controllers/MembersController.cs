@@ -34,12 +34,20 @@ namespace OngProject.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetMemberDetailsDto>> GetById(int id)
+        public async Task<ActionResult<GetMembersDto>> GetById(int id)
         {
             return await _service.GetMemberDetails(id);
         }
 
         [HttpPost]
+        [Authorize(Roles = "User, Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Member.",Description = "Requires user privileges.")]
+        [SwaggerResponse(200, "Created. Returns id of the created member.", typeof(int))]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        #endregion
         public async Task<ActionResult<int>> Create(CreateMemberDto memberDto)
         {
             return await _service.CreateMember(memberDto);
@@ -54,6 +62,14 @@ namespace OngProject.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Delete an existing Member", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns nothing")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        #endregion
         public async Task<ActionResult> Delete(int id)
         {
             await _service.SoftDeleteMember(id);
