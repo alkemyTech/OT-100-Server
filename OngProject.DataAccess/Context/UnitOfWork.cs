@@ -25,6 +25,8 @@ namespace OngProject.DataAccess.Context
             UsersDetails = new UserDetailsRepository(_dbContext, _logger);
             Testimonials = new TestimonyRepository(_dbContext, _logger);
             Slides = new SlideRepository(_dbContext, _logger);
+            Comments = new CommentRepository(_dbContext, _logger);
+
         }
         
 
@@ -36,6 +38,8 @@ namespace OngProject.DataAccess.Context
         public IUserDetailsRepository UsersDetails { get; }
         public ITestimonyRepository Testimonials { get; }
         public ISlideRepository Slides { get; }
+        public ICommentRepository Comments { get; }
+
 
 
         public async Task CompleteAsync()
