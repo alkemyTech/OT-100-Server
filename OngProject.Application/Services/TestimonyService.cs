@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Testimonials;
 using OngProject.Application.Exceptions;
+using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Interfaces;
+using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
@@ -20,13 +21,15 @@ namespace OngProject.Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<GetTestimonialsDto>> GetTestimonials()
+        
+        public async Task<Pagination<GetTestimonialsDto>> GetTestimonials(TestimonialsQueryDto queryDto)
         {
             var testimonials = await _unitOfWork.Testimonials.GetAll();
 
             return testimonials
                 .AsQueryable()
-                .ProjectTo<GetTestimonialsDto>(_mapper.ConfigurationProvider);
+                .ProjectTo<GetTestimonialsDto>(_mapper.ConfigurationProvider)
+                .PaginatedResponse(queryDto.PageNumber, queryDto.PageSize);
         }
 
         public async Task<GetTestimonialsDto> GetTestimonyById(int id)

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Testimonials;
+using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -20,9 +20,9 @@ namespace OngProject.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetTestimonialsDto>>> GetAll()
+        public async Task<ActionResult<Pagination<GetTestimonialsDto>>> GetAll([FromQuery] TestimonialsQueryDto queryDto)
         {
-            return Ok(await _service.GetTestimonials());
+            return await _service.GetTestimonials(queryDto);
         }
 
         [HttpGet("{id}")]
