@@ -13,6 +13,7 @@ namespace OngProject.Application.Interfaces
         IUserDetailsRepository UsersDetails { get; }
         ITestimonyRepository Testimonials { get; }
         ISlideRepository Slides { get; }
+        ICommentRepository Comments { get; }
 
         Task CompleteAsync();
     }
