@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using OngProject.Application.Interfaces.Identity;
 using OngProject.Application.Services;
 
 namespace OngProject.Application

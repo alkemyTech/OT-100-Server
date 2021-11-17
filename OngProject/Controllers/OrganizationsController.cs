@@ -9,7 +9,7 @@ namespace OngProject.Controllers
 {
     [ApiController]
     [Route("api/organizations")]
-    [SwaggerTag("Create, read, update and delete Organizations")]
+    [SwaggerTag("Create, Read, Update and Delete Organizations")]
     public class OrganizationsController : ControllerBase
     {
         private readonly OrganizationService _service;
@@ -22,10 +22,10 @@ namespace OngProject.Controllers
         [HttpGet]
         [AllowAnonymous]
         #region Documentation
-        [SwaggerOperation(Summary = "List of all Organizations", Description = "Unnecessary admin privileges")]
-        [SwaggerResponse(200, "Success. Returns a list of existing Organizations", typeof(GetOrganizationsDto))]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerOperation(Summary = "List of all Organizations", Description = "Unnecessary privileges")]
+        [SwaggerResponse(200, "Success. Returns a list of existing Organizations")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
         public async Task<ActionResult> GetAll()
         {
@@ -35,13 +35,14 @@ namespace OngProject.Controllers
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
-        [SwaggerOperation(Summary = "Get details of the organization by ID", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Success. Returns the Organization data.", typeof(GetOrganizationDetailsDto))]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerOperation(Summary = "Get details of the organization by id", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns the organization details.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetById([SwaggerParameter("ID of an existing News")] int id)
+        public async Task<ActionResult> GetById(int id)
         {
             return Ok(await _service.GetById(id));
         }
@@ -49,12 +50,13 @@ namespace OngProject.Controllers
         [HttpGet("public/{id}")]
         [AllowAnonymous]
         #region Documentation
-        [SwaggerOperation(Summary = "Get public details of the organization by ID", Description = "Unnecessary admin privileges")]
-        [SwaggerResponse(200, "Success. Returns the public data of the Organization", typeof(GetOrganizationPublicDto))]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerOperation(Summary = "Get public details of the organization by id", Description = "Unnecessary privileges")]
+        [SwaggerResponse(200, "Success. Returns the public data of the Organization")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetByIdPublic([SwaggerParameter("ID of an existing Organization")] int id)
+        public async Task<ActionResult> GetByIdPublic(int id)
         {
             return Ok(await _service.GetByIdPublic(id));
         }
@@ -64,11 +66,12 @@ namespace OngProject.Controllers
         #region Documentation
         [SwaggerOperation(Summary = "Creates a new Organization", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns nothing")]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> Post([FromBody][SwaggerParameter("Object parameters")] CreateOrganizationDto model)
+        public async Task<ActionResult> Post([FromBody] CreateOrganizationDto model)
         {
             return Ok(await _service.CreateOrganization(model));
         }
@@ -77,12 +80,14 @@ namespace OngProject.Controllers
         [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Modifies an existing Organization", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Success. Returns nothing")]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(204, "Updated. Returns nothing.")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> Put([SwaggerParameter("ID of an existing Organization")] int id, [FromBody] UpdateOrganizationPublicDto model)
+        public async Task<ActionResult> Put(int id, [FromBody] UpdateOrganizationPublicDto model)
         {
             await _service.Update(id,model);
             return NoContent();
@@ -92,12 +97,13 @@ namespace OngProject.Controllers
         [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Soft Delete an existing Organization", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Success. Returns nothing")]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(204, "Deleted. Returns nothing.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> Delete([SwaggerParameter("ID of an existing Organization")] int id)
+        public async Task<ActionResult> Delete(int id)
         {
             await _service.Delete(id);
             return NoContent();
