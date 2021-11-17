@@ -20,24 +20,24 @@ namespace OngProject
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
-        {
+        {            
             services.AddDataAccessLayer(Configuration);
             services.AddApplicationLayer();
 
-           services.AddSingleton<ICurrentUserService, CurrentUserService>();
+            services.AddSingleton<ICurrentUserService, CurrentUserService>();
             services.AddHttpContextAccessor();
 
-            services.AddControllers(ops => 
+            services.AddControllers(ops =>
                     ops.Filters.Add<ApiExceptionFilterAttribute>())
                 .AddNewtonsoftJson();
-            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OngProject", Version = "v1" });
                 c.EnableAnnotations();
-                
+
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -46,7 +46,7 @@ namespace OngProject
                     In = ParameterLocation.Header,
                     Description = "Type into the textbox: Bearer {your JWT token}"
                 });
-                
+
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -63,7 +63,7 @@ namespace OngProject
                 });
             });
         }
-        
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
