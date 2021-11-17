@@ -5,6 +5,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Contacts;
 using OngProject.Application.Interfaces;
+using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
 {
@@ -25,6 +26,16 @@ namespace OngProject.Application.Services
             return categories
                 .AsQueryable()
                 .ProjectTo<GetContactsDto>(_mapper.ConfigurationProvider);
+        }
+
+        public async Task<int> CreateContact(CreateContactDto contactDto)
+        {
+            var contact = _mapper.Map<Contact>(contactDto);
+
+            await _unitOfWork.Contacts.Create(contact);
+            await _unitOfWork.CompleteAsync();
+
+            return contact.Id;
         }
     }
 }

@@ -22,23 +22,11 @@ namespace OngProject.Application.Services
         public async Task<IEnumerable<GetCommentsDto>> GetComments()
         {
             var comments = await _unitOfWork.Comments.GetAll();
-            
+
             return comments
                 .AsQueryable()
-                .ProjectTo<GetCommentsDto>(_mapper.ConfigurationProvider)
-                .ToList();
+                .ProjectTo<GetCommentsDto>(_mapper.ConfigurationProvider);
         }
 
-        /*
-         * public async Task<Pagination<GetTestimonialsDto>> GetTestimonials(TestimonialsQueryDto queryDto)
-        {
-            var testimonials = await _unitOfWork.Testimonials.GetAll();
-
-            return testimonials
-                .AsQueryable()
-                .ProjectTo<GetTestimonialsDto>(_mapper.ConfigurationProvider)
-                .PaginatedResponse(queryDto.PageNumber, queryDto.PageSize);
-        }
-         */
     }
 }
