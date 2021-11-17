@@ -33,7 +33,7 @@ namespace OngProject.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "User")]
         #region Documentation
         [SwaggerOperation(Summary = "Create a Contact.", Description = ".")]
         [SwaggerResponse(200, "Created.")]
