@@ -23,7 +23,7 @@ namespace OngProject.Controllers
         [HttpGet]
         [AllowAnonymous]
         #region Documentation
-        [SwaggerOperation(Summary = "List of all News", Description = "Requires admin privileges")]
+        [SwaggerOperation(Summary = "List of all News", Description = ".")]
         [SwaggerResponse(200, "Success. Returns a list of existing News.")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
         [SwaggerResponse(403, "Unauthorized user.")]
