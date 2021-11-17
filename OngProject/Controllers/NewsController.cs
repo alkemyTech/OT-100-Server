@@ -58,7 +58,7 @@ namespace OngProject.Controllers
         [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
         [SwaggerResponse(403, "Unauthorized user")]
         #endregion
-        public async Task<ActionResult<int>> Create([SwaggerParameter("Object parameters")]CreateNewsDto newsDto)
+        public async Task<ActionResult<int>> Create(CreateNewsDto newsDto)
         {
             return await _service.CreateNews(newsDto);
         }
@@ -73,7 +73,7 @@ namespace OngProject.Controllers
         [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
         [SwaggerResponse(403, "Unauthorized user")]
         #endregion
-        public async Task<ActionResult<GetNewsDetailsDto>> Update([SwaggerParameter("ID of an existing News")]int id, CreateNewsDto newsDto)
+        public async Task<ActionResult<GetNewsDetailsDto>> Update(int id, CreateNewsDto newsDto)
         {
             await _service.UpdateNews(id, newsDto);
 
