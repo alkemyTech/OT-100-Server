@@ -9,6 +9,7 @@ namespace OngProject.Controllers
 {
     [ApiController]
     [Route("api/categories")]
+    [SwaggerTag("Create, Read, Update and Delete Categories")]
     public class CategoriesController : ControllerBase
     {
         private readonly CategoryService _service;
@@ -21,11 +22,11 @@ namespace OngProject.Controllers
         [HttpGet]
         [Authorize(Roles = "Admin")]
         #region Documentation
-        [SwaggerOperation(Summary = "List of all Categories",Description = "Require admin privileges")]
-        [SwaggerResponse(200, "Success. Returns a list of existing Categories", typeof(GetCategoriesDto))]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user or wrong jwt token")]
+        [SwaggerOperation(Summary = "List of all Categories", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns a list of existing Categories.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user or wrong jwt token.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
         public async Task<ActionResult> GetAll()
         {
@@ -35,17 +36,27 @@ namespace OngProject.Controllers
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
-        [SwaggerOperation(Summary = "Get Category details by id", Description = "Unnecessary admin privileges")]
-        [SwaggerResponse(200, "Success. Returns the News details", typeof(GetCategoryDetailsDto))]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerOperation(Summary = "Get slide details by id", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns the category details.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetById([SwaggerParameter("ID of an existing Category")] int id)
+        public async Task<ActionResult> GetById(int id)
         {
             return Ok(await _service.GetById(id));
         }
 
         [HttpPost]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Category", Description = ".")]
+        [SwaggerResponse(200, "Created. Returns the id of the created object.")]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
         public async Task<ActionResult> Post([FromBody] CreateCategoryDto model)
         {
             return Ok(await _service.CreateCategory(model));
@@ -55,12 +66,14 @@ namespace OngProject.Controllers
         [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Modifies an existing Category", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Deleted. Returns nothing")]
-        [SwaggerResponse(400, "BadRequest. Object not deleted, try again")]
-        [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(204, "Updated. Returns nothing.")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> Put([SwaggerParameter("ID of an existing Category")] int id, [FromBody] CreateCategoryDto model)
+        public async Task<ActionResult> Put(int id, [FromBody] CreateCategoryDto model)
         {
             await _service.Update(id,model);
             return NoContent();
@@ -70,12 +83,13 @@ namespace OngProject.Controllers
         [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Soft delete an existing Category", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Deleted. Returns nothing")]
-        [SwaggerResponse(400, "BadRequest. Object not deleted, try again")]
-        [SwaggerResponse(401, "Unauthenticated or wrong jwt token")]
+        [SwaggerResponse(204, "Deleted. Returns nothing.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
         [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> Delete([SwaggerParameter("ID of an existing Category")] int id)
+        public async Task<ActionResult> Delete(int id)
         {
             await _service.Delete(id);
             return NoContent();
