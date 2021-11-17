@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using OngProject.Application.Interfaces;
 using OngProject.Application.Interfaces.Identity;
+using OngProject.DataAccess.AWS;
 using OngProject.DataAccess.Context;
 using OngProject.DataAccess.Identity;
 
@@ -59,6 +60,8 @@ namespace OngProject.DataAccess
             services.AddScoped<ITokenHandlerService, TokenHandlerService>();
 
             #endregion
+
+            services.AddScoped<IFileStore, AwsFileStore>();
 
             return services;
         }

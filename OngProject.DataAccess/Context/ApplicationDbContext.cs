@@ -24,6 +24,8 @@ namespace OngProject.DataAccess.Context
         public DbSet<Testimony> Testimonials { get; set; }
         public DbSet<Slide> Slides { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
