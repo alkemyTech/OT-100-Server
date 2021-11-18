@@ -14,6 +14,7 @@ namespace OngProject.Application.Interfaces
         ITestimonyRepository Testimonials { get; }
         ISlideRepository Slides { get; }
         IContactRepository Contacts { get; }
+        ICommentRepository Comments { get; }
 
         Task CompleteAsync();
     }
