@@ -10,7 +10,7 @@ namespace OngProject.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    [SwaggerTag("Create, read, update and delete Users")]
+    [SwaggerTag("Create, Read, Update and Delete Users")]
     public class UsersDetailsController : ControllerBase
     {
         private readonly UserDetailsService _detailsService;
@@ -23,11 +23,11 @@ namespace OngProject.Controllers
         [HttpGet]
         [Authorize(Roles = "Admin")]
         #region Documentation
-        [SwaggerOperation(Summary = "List of all USers", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Success. Returns a list of existing Organizations", typeof(GetUsersDetailsDto))]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerOperation(Summary = "List of all Users.", Description = "Requires admin privileges.")]
+        [SwaggerResponse(200, "Success. Returns a list of existing Users.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
         public async Task<ActionResult> GetAll()
         {
@@ -37,26 +37,28 @@ namespace OngProject.Controllers
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
-        [SwaggerOperation(Summary = "Get a User by ID", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Success. Returns an existing User", typeof(GetUserDetailsDto))]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerOperation(Summary = "Get user details by id.", Description = "Requires admin privileges.")]
+        [SwaggerResponse(200, "Success. Returns the user details.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult<GetUserDetailsDto>> GetById([SwaggerParameter("ID of an existing User")] int id)
+        public async Task<ActionResult<GetUserDetailsDto>> GetById(int id)
         {
             return await _detailsService.GetUserDetails(id);
         }
         
-        #region Documentation
-        [SwaggerOperation(Summary = "Update personal data of the user.")]
-        [SwaggerResponse(204, "Updated.")]
-        [SwaggerResponse(400, "Something went wrong, try again.")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
-        [SwaggerResponse(403, "Unauthorized user.")]
-        #endregion
         [Authorize(Roles = "User, Admin")]
         [HttpPatch("{id}")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Modifies an existing Slide.", Description = "Requires user privileges.")]
+        [SwaggerResponse(204, "Updated. Returns nothing.")]
+        [SwaggerResponse(400, "BadRequest. Something went wrong, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
         public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<UpdateUserDetailsDto> patchDocument)
         {
             await _detailsService.PatchUser(id, patchDocument);
@@ -69,11 +71,12 @@ namespace OngProject.Controllers
         #region Documentation
         [SwaggerOperation(Summary = "Soft Delete of an existing User", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success. Returns nothing")]
-        [SwaggerResponse(400, "BadRequest. Something went wrong, try again")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
         [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> Delete([SwaggerParameter("ID of an existing User")] int id)
+        public async Task<ActionResult> Delete(int id)
         {
             await _detailsService.SoftDeleteUsers(id);
 

@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Contacts;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 
 namespace OngProject.Controllers
 {
@@ -31,6 +34,20 @@ namespace OngProject.Controllers
         {
             return Ok(await _service.GetAll());
         }
-        
+
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create a Contact.", Description = ".")]
+        [SwaggerResponse(200, "Created.")]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
+        public async Task<ActionResult<int>> Create(CreateContactDto contactDto)
+        {
+            return await _service.CreateContact(contactDto);
+        }
+
     }
 }

@@ -24,7 +24,7 @@ namespace OngProject.Application
             services.AddScoped<TestimonyService>();
             services.AddScoped<SlideService>();
             services.AddScoped<ContactService>();
-            
+
             #region MailService
             services.Configure<MailConfiguration>(configuration.GetSection("MailConfiguration"));
             services.AddSendGrid(options =>
@@ -33,8 +33,9 @@ namespace OngProject.Application
             });
             services.AddScoped<IMailService, MailService>();
             #endregion
-            
-            
+
+            services.AddScoped<CommentService>();
+
             return services;
         }
     }

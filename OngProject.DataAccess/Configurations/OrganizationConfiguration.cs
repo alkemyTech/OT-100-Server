@@ -23,14 +23,14 @@ namespace OngProject.DataAccess.Configurations
             builder.Property(m => m.WelcomeText)
                 .IsRequired()
                 .HasMaxLength(200);
+            builder.Property(m => m.FacebookUrl)
+               .HasMaxLength(120);
+            builder.Property(m => m.InstagramUrl)
+                .HasMaxLength(120);
+            builder.Property(m => m.LinkedInUrl)
+                .HasMaxLength(120);
             builder.Property(m => m.AboutUsText)
                 .HasMaxLength(1200);
-            builder.Property(m => m.InstagramUrl)
-            .HasMaxLength(200);
-            builder.Property(m => m.FacebookUrl)
-            .HasMaxLength(200);
-            builder.Property(m => m.TwitterUrl)
-            .HasMaxLength(200);
             builder.Property(m => m.CreatedAt)
                 .HasColumnType("SMALLDATETIME");
             builder.Property(m => m.UpdatedAt)
