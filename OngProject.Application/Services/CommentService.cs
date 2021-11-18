@@ -5,6 +5,7 @@ using OngProject.Application.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
 {
@@ -26,6 +27,16 @@ namespace OngProject.Application.Services
             return comments
                 .AsQueryable()
                 .ProjectTo<GetCommentsDto>(_mapper.ConfigurationProvider);
+        }
+
+        public async Task<int> CreateComment(CreateCommentDto commentDto)
+        {
+            var comment = _mapper.Map<Comment>(commentDto);
+
+            await _unitOfWork.Comments.Create(comment);
+            await _unitOfWork.CompleteAsync();
+
+            return comment.Id;
         }
 
     }
