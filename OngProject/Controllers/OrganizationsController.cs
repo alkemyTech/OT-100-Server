@@ -56,7 +56,7 @@ namespace OngProject.Controllers
         [SwaggerResponse(404, "NotFound. Entity id not found.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetByIdPublic(int id)
+        public async Task<ActionResult<GetOrganizationPublicDto>> GetByIdPublic(int id)
         {
             return Ok(await _service.GetByIdPublic(id));
         }
