@@ -23,7 +23,7 @@ namespace OngProject.Controllers
         [HttpGet]
         [AllowAnonymous]
         #region Documentation
-        [SwaggerOperation(Summary = "List of all News", Description = "Requires admin privileges")]
+        [SwaggerOperation(Summary = "List of all News", Description = ".")]
         [SwaggerResponse(200, "Success. Returns a list of existing News.")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
         [SwaggerResponse(403, "Unauthorized user.")]
@@ -61,7 +61,7 @@ namespace OngProject.Controllers
         [SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult<int>> Create(CreateNewsDto newsDto)
+        public async Task<ActionResult<int>> Create([FromForm] CreateNewsDto newsDto)
         {
             return await _service.CreateNews(newsDto);
         }
@@ -78,7 +78,7 @@ namespace OngProject.Controllers
         [SwaggerResponse(404, "NotFound. Entity id not found.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult<GetNewsDetailsDto>> Update(int id, CreateNewsDto newsDto)
+        public async Task<ActionResult<GetNewsDetailsDto>> Update(int id, [FromForm] CreateNewsDto newsDto)
         {
             await _service.UpdateNews(id, newsDto);
 

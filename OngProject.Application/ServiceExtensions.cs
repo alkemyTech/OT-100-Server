@@ -19,6 +19,7 @@ namespace OngProject.Application
             services.AddScoped<TestimonyService>();
             services.AddScoped<SlideService>();
             services.AddScoped<ContactService>();
+            services.AddScoped<CommentService>();
 
             return services;
         }

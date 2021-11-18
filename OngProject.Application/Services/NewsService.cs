@@ -14,11 +14,13 @@ namespace OngProject.Application.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IFileStore _fileStore;
 
-        public NewsService(IUnitOfWork unitOfWork, IMapper mapper)
+        public NewsService(IUnitOfWork unitOfWork, IMapper mapper, IFileStore fileStore )
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _fileStore = fileStore;
         }
         // ==================== Get All ==================== //
         public async Task<IEnumerable<GetNewsDto>> GetNews()
@@ -43,8 +45,10 @@ namespace OngProject.Application.Services
         // ==================== Post News ==================== //
        public async Task<int> CreateNews(CreateNewsDto newsDto)
         {
+            var url = await _fileStore.SaveFile(newsDto.Image);
             var news = _mapper.Map<News>(newsDto);
-            news.Type = "News";
+            news.Image = url;
+          
             await _unitOfWork.News.Create(news);
             await _unitOfWork.CompleteAsync();
 
@@ -55,12 +59,15 @@ namespace OngProject.Application.Services
       public async Task<GetNewsDetailsDto> UpdateNews(int id, CreateNewsDto newsDto)
         {
             var news = await _unitOfWork.News.GetById(id);
+            var url = await _fileStore.EditFile(newsDto.Image, news.Image);
             
             if (news is null)
                 throw new NotFoundException(nameof(News), id);
 
             news.Id = id;
+            
             await _unitOfWork.News.Update(_mapper.Map(newsDto, news));
+            news.Image = url;
             await _unitOfWork.CompleteAsync();
 
             return _mapper.Map<GetNewsDetailsDto>(news);
@@ -76,6 +83,7 @@ namespace OngProject.Application.Services
                 throw new NotFoundException(nameof(News), id);
 
             await _unitOfWork.News.Delete(news);
+            await _fileStore.DeleteFile(news.Image);
             await _unitOfWork.CompleteAsync();
         }
 
