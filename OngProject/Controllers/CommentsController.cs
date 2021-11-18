@@ -32,5 +32,21 @@ namespace OngProject.Controllers
         {
             return await _service.GetComments();
         }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,User")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Soft Delete an existing Coomment", Description = "Requires admin o user privileges")]
+        [SwaggerResponse(204, "Deleted. Returns nothing.")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
+        public async Task<ActionResult> Delete(int id)
+        {
+            await _service.Delete(id);
+            return NoContent();
+        }
     }
 }
