@@ -6,6 +6,7 @@ using OngProject.Application.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
 {
@@ -29,14 +30,24 @@ namespace OngProject.Application.Services
                 .ProjectTo<GetCommentsDto>(_mapper.ConfigurationProvider);
         }
 
+        public async Task Update(int id, UpdateCommentDto updateComment)
+        {
+            var comment = await _unitOfWork.Comments.GetById(id);
+
+            if (comment is null)
+                throw new NotFoundException(nameof(Comment), id);
+
+            await _unitOfWork.Comments.Update(_mapper.Map(updateComment, comment));
+            await _unitOfWork.CompleteAsync();
+        }
         public async Task Delete(int id)
         {
-            var comments = await _unitOfWork.Comments.GetById(id);
+            var comment = await _unitOfWork.Comments.GetById(id);
 
-            if (comments is null)
-                throw new NotFoundException(nameof(comments), id);
+            if (comment is null)
+                throw new NotFoundException(nameof(Comment), id);
 
-            await _unitOfWork.Comments.Delete(comments);
+            await _unitOfWork.Comments.Delete(comment);
             await _unitOfWork.CompleteAsync();
 
         }
