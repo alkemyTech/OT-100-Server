@@ -7,7 +7,7 @@ namespace OngProject.Application.Interfaces
     {
         Task<string> SaveFile(IFormFile image);
 
-        Task<string> EditFile(IFormFile image);
+        Task<string> EditFile(IFormFile image, string url);
 
         Task DeleteFile(string url);
     }

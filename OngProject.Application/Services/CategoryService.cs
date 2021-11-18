@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.Interfaces;
+using OngProject.Application.Helpers.Wrappers;
+using OngProject.Application.Mappings;
 
 namespace OngProject.Application.Services
 {
@@ -20,13 +22,15 @@ namespace OngProject.Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+        
 
-        public async Task<IEnumerable<GetCategoriesDto>> GetAll()
+        public async Task<Pagination<GetCategoriesDto>> GetAll(CategoryQueryDto queryDto)
         {
             var categories = await _unitOfWork.Categories.GetAll();
             return categories
                 .AsQueryable()
-                .ProjectTo<GetCategoriesDto>(_mapper.ConfigurationProvider);
+                .ProjectTo<GetCategoriesDto>(_mapper.ConfigurationProvider)
+                .PaginatedResponse(queryDto.PageNumber, queryDto.PageSize);
         }
 
         public async Task<GetCategoryDetailsDto> GetById(int id)

@@ -13,5 +13,6 @@ namespace OngProject.Application.Mappings
 
         public static Pagination<TDestination> PaginatedResponse<TDestination>(this IQueryable<TDestination> queryable, int pageNumber, int pageSize) 
             => Pagination<TDestination>.Create(queryable, pageNumber, pageSize);
+
     }
 }
