@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.News;
+using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -29,9 +30,9 @@ namespace OngProject.Controllers
         [SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<Pagination<GetNewsDto>>> GetAll([FromQuery] NewsQueryDto queryDto)
         {
-            return Ok(await _service.GetNews());
+            return await _service.GetNews(queryDto);
         }
 
         // ==================== Get By Id ==================== //
