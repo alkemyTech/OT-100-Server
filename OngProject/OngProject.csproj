@@ -19,4 +19,8 @@
     <ProjectReference Include="..\OngProject.DataAccess\OngProject.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\api\doc.json" />
+  </ItemGroup>
+
 </Project>
