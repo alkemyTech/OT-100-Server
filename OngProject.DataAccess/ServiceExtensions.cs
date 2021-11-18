@@ -62,6 +62,7 @@ namespace OngProject.DataAccess
             #endregion
 
             services.AddScoped<IFileStore, AwsFileStore>();
+            services.Configure<AwsManageCredentials>(configuration.GetSection("AwsManageCredentials"));
 
             return services;
         }

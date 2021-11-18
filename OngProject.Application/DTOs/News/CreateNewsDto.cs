@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 using OngProject.Application.Mappings;
 
 namespace OngProject.Application.DTOs.News
@@ -11,10 +12,11 @@ namespace OngProject.Application.DTOs.News
         
         [StringLength(2000)]
         public string Content { get; set; }
+        public string Type { get; set; }
 
         [Required]
         [DataType(DataType.Upload)]
-        public string Image { get; set; }
+        public IFormFile Image { get; set; }
 
         [Required]
         public int CategoryId { get; set; }
