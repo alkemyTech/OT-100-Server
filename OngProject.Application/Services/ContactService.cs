@@ -7,6 +7,7 @@ using OngProject.Application.DTOs.Contacts;
 using OngProject.Application.Interfaces;
 using OngProject.Domain.Entities;
 
+
 namespace OngProject.Application.Services
 {
     public class ContactService
@@ -27,6 +28,7 @@ namespace OngProject.Application.Services
                 .AsQueryable()
                 .ProjectTo<GetContactsDto>(_mapper.ConfigurationProvider);
         }
+
 
         public async Task<int> CreateContact(CreateContactDto contactDto)
         {

@@ -24,7 +24,7 @@ namespace OngProject
         public void ConfigureServices(IServiceCollection services)
         {            
             services.AddDataAccessLayer(Configuration);
-            services.AddApplicationLayer();
+            services.AddApplicationLayer(Configuration);
 
             services.AddSingleton<ICurrentUserService, CurrentUserService>();
             services.AddHttpContextAccessor();
