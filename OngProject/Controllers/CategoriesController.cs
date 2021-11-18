@@ -49,6 +49,7 @@ namespace OngProject.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Create Category", Description = ".")]
         [SwaggerResponse(200, "Created. Returns the id of the created object.")]
