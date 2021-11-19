@@ -64,6 +64,7 @@ namespace OngProject.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Modifies an existing Member.", Description = ".")]
         [SwaggerResponse(204, "Updated. Returns nothing.")]

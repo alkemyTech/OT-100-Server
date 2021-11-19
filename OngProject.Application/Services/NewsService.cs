@@ -41,6 +41,17 @@ namespace OngProject.Application.Services
 
             return _mapper.Map<GetNewsDetailsDto>(news);
         }
+         
+         // ==================== Get By Id Comments ==================== //
+         public async Task<GetNewsDetailsCommentsDto> GetByIdComments(int id)
+         {
+             var news = await _unitOfWork.News.GetByIdComments(id);
+
+             if (news is null)
+                 throw new NotFoundException(nameof(News), id);
+
+             return _mapper.Map<GetNewsDetailsCommentsDto>(news);
+         }
 
         // ==================== Post News ==================== //
        public async Task<int> CreateNews(CreateNewsDto newsDto)
