@@ -28,11 +28,11 @@ namespace OngProject.Controllers
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
         [SwaggerResponse(403, "Unauthorized user")]
         #endregion
-        public async Task<IEnumerable<GetCommentsDto>> GetAll()
+        public async Task<ActionResult<List<GetCommentsDto>>> GetAll()
         {
             return await _service.GetComments();
         }
-        
+
         [HttpPost]
         [Authorize]
         #region Documentation

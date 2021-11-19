@@ -20,13 +20,13 @@ namespace OngProject.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GetCommentsDto>> GetComments()
+        public async Task<List<GetCommentsDto>> GetComments()
         {
             var comments = await _unitOfWork.Comments.GetAll();
 
-            return comments
-                .AsQueryable()
-                .ProjectTo<GetCommentsDto>(_mapper.ConfigurationProvider);
+            return comments.OrderBy(x => x.CreatedAt)
+                           .AsQueryable()
+                           .ProjectTo<GetCommentsDto>(_mapper.ConfigurationProvider).ToList();
         }
 
         public async Task<int> CreateComment(CreateCommentDto commentDto)
