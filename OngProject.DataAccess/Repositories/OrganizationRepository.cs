@@ -47,5 +47,22 @@ namespace OngProject.DataAccess.Repositories
                 return new Organization();
             }
         }
+
+        public async Task<Organization> GetOrgByIdWithSlides(int id)
+        {
+            try
+            {
+                return await DbContext.Organizations
+                    .AsNoTracking()
+                    .Where(a => a.DeletedAt == null)
+                    .Include(a => a.Slides.OrderBy(s => s.Order))
+                    .FirstOrDefaultAsync(a => a.Id.Equals(id));
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, $"{typeof(OrganizationRepository)} GetById method has generated an error");
+                return new Organization();
+            }
+        }
     }
 }

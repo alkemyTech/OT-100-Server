@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Comments;
+using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,28 @@ namespace OngProject.Application.Services
             await _unitOfWork.CompleteAsync();
 
             return comment.Id;
+        }
+
+        public async Task Update(int id, UpdateCommentDto updateComment)
+        {
+            var comment = await _unitOfWork.Comments.GetById(id);
+
+            if (comment is null)
+                throw new NotFoundException(nameof(Comment), id);
+
+            await _unitOfWork.Comments.Update(_mapper.Map(updateComment, comment));
+            await _unitOfWork.CompleteAsync();
+        }
+        public async Task Delete(int id)
+        {
+            var comment = await _unitOfWork.Comments.GetById(id);
+
+            if (comment is null)
+                throw new NotFoundException(nameof(Comment), id);
+
+            await _unitOfWork.Comments.Delete(comment);
+            await _unitOfWork.CompleteAsync();
+
         }
 
     }
