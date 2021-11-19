@@ -30,6 +30,16 @@ namespace OngProject.Application.Services
                 .ProjectTo<GetCommentsDto>(_mapper.ConfigurationProvider);
         }
 
+        public async Task<int> CreateComment(CreateCommentDto commentDto)
+        {
+            var comment = _mapper.Map<Comment>(commentDto);
+
+            await _unitOfWork.Comments.Create(comment);
+            await _unitOfWork.CompleteAsync();
+
+            return comment.Id;
+        }
+
         public async Task Update(int id, UpdateCommentDto updateComment)
         {
             var comment = await _unitOfWork.Comments.GetById(id);

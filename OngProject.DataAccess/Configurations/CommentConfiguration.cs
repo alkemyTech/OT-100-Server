@@ -8,9 +8,6 @@ namespace OngProject.DataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
-            builder.HasKey(m => m.Id);
-            builder.Property(m => m.UserId)
-                .IsRequired();
             builder.Property(m => m.Body)
                 .IsRequired()
                 .HasMaxLength(8000);

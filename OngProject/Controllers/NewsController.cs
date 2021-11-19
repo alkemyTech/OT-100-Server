@@ -50,6 +50,22 @@ namespace OngProject.Controllers
         {
             return await _service.GetNewsDetails(id);
         }
+        
+        // ==================== Get By Id ==================== //
+        [HttpGet("{id}/comments")]
+        [Authorize]
+        #region Documentation
+        [SwaggerOperation(Summary = "Get comments for News details by id", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns the comments for News details")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
+        public async Task<ActionResult<GetNewsDetailsCommentsDto>> GetByIdComments(int id)
+        {
+            return await _service.GetByIdComments(id);
+        }
 
         // ==================== Post News ==================== //
         [HttpPost]
