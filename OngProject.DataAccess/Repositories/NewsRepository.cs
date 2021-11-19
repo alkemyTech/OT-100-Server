@@ -27,7 +27,7 @@ namespace OngProject.DataAccess.Repositories
             }
             catch (Exception e)
             {
-                Logger.LogError(e, $"{typeof(ActivityRepository)} GetAll method has generated an error");
+                Logger.LogError(e, $"{typeof(NewsRepository)} GetAll method has generated an error");
                 return new List<News>();
             }
         }
@@ -43,7 +43,25 @@ namespace OngProject.DataAccess.Repositories
             }
             catch (Exception e)
             {
-                Logger.LogError(e, $"{typeof(ActivityRepository)} GetById method has generated an error");
+                Logger.LogError(e, $"{typeof(NewsRepository)} GetById method has generated an error");
+                return new News();
+            }
+        }
+        
+        
+        public async Task<News> GetByIdComments(int id)
+        {
+            try
+            {
+                return await DbContext.News
+                    .AsNoTracking()
+                    .Where(m => m.DeletedAt == null)
+                    .Include(m => m.Comments)
+                    .FirstOrDefaultAsync(m => m.Id.Equals(id));
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, $"{typeof(NewsRepository)} GetById method has generated an error");
                 return new News();
             }
         }

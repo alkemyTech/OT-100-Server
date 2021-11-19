@@ -32,5 +32,19 @@ namespace OngProject.Controllers
         {
             return await _service.GetComments();
         }
+        
+        [HttpPost]
+        [Authorize]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Comment.",Description = "Requires user privileges.")]
+        [SwaggerResponse(200, "Created. Returns the id of the created object.")]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
+        public async Task<ActionResult<int>> Create([FromBody] CreateCommentDto commentDto)
+        {
+            return await _service.CreateComment(commentDto);
+        }
     }
 }

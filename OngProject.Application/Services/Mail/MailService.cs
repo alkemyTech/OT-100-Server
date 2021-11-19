@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OngProject.Application.DTOs.Mails;
 using OngProject.Application.Helpers.Mail;
 using OngProject.Application.Interfaces.Mail;
+using OngProject.Domain.Entities;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
@@ -12,11 +14,13 @@ namespace OngProject.Application.Services.Mail
     public class MailService : IMailService
     {
         private readonly ISendGridClient _sendGridClient;
+        private readonly ILogger _logger;
         private readonly MailConfiguration _mail;
 
         public MailService(ISendGridClient sendGridClient, IOptionsMonitor<MailConfiguration> options)
         {
             _sendGridClient = sendGridClient;
+            _logger = loggerFactory.CreateLogger("logs");;
             _mail = options.CurrentValue;
         }
         
@@ -36,7 +40,7 @@ namespace OngProject.Application.Services.Mail
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                _logger.LogError(ex.Message);
             }
         }
     }

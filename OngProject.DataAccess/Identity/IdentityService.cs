@@ -1,13 +1,16 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OngProject.Application.DTOs;
 using OngProject.Application.DTOs.Identity;
+using OngProject.Application.DTOs.Mails;
 using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;
 using OngProject.Application.Interfaces.Identity;
+using OngProject.Application.Interfaces.Mail;
 using OngProject.Domain.Entities;
 
 namespace OngProject.DataAccess.Identity
@@ -20,16 +23,17 @@ namespace OngProject.DataAccess.Identity
         private readonly ITokenHandlerService _tokenHandlerService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICurrentUserService _currentUserService;
+        private readonly IMailService _mailService;
 
-        
 
         public IdentityService(UserManager<ApplicationUser> userManager, ITokenHandlerService tokenHandlerService,
-            IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
+            IUnitOfWork unitOfWork, ICurrentUserService currentUserService, IMailService mailService)
         {
             _userManager = userManager;
             _tokenHandlerService = tokenHandlerService;
             _unitOfWork = unitOfWork;
             _currentUserService = currentUserService;
+            _mailService = mailService;
         }
 
         public async Task<string> Register(AuthRequestDto requestDto)
@@ -57,6 +61,16 @@ namespace OngProject.DataAccess.Identity
 
             await _unitOfWork.UsersDetails.Create(user);
             await _unitOfWork.CompleteAsync();
+
+            var mail = new SendMailDto
+            {
+                Name = newUser.UserName,
+                EmailTo = newUser.Email,
+                Subject = "Registro ONG Somos más.",
+                Text = await File.ReadAllTextAsync("./wwwroot/templates/plantilla_email.html")
+            };
+
+            await _mailService.SendMail(mail);
 
             return newUser.Email;
         }
@@ -92,6 +106,7 @@ namespace OngProject.DataAccess.Identity
 
             throw new BadRequestException("Incorrect email or password.");
         }
+        
         public async Task<CurrentUserDto> Me(){
             var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id.Equals(_currentUserService.userId));
 
