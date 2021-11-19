@@ -27,7 +27,7 @@ namespace OngProject.DataAccess.Repositories
             }
             catch (Exception e)
             {
-                Logger.LogError(e, $"{typeof(ActivityRepository)} GetAll method has generated an error");
+                Logger.LogError(e, $"{typeof(MemberRepository)} GetAll method has generated an error");
                 return new List<Member>();
             }
         }
@@ -43,7 +43,7 @@ namespace OngProject.DataAccess.Repositories
             }
             catch (Exception e)
             {
-                Logger.LogError(e, $"{typeof(ActivityRepository)} GetById method has generated an error");
+                Logger.LogError(e, $"{typeof(MemberRepository)} GetById method has generated an error");
                 return new Member();
             }
         }

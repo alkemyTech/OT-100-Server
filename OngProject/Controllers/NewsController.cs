@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.News;
+using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -23,15 +24,15 @@ namespace OngProject.Controllers
         [HttpGet]
         [AllowAnonymous]
         #region Documentation
-        [SwaggerOperation(Summary = "List of all News", Description = "Requires admin privileges")]
+        [SwaggerOperation(Summary = "List of all News", Description = ".")]
         [SwaggerResponse(200, "Success. Returns a list of existing News.")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
         [SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<Pagination<GetNewsDto>>> GetAll([FromQuery] NewsQueryDto queryDto)
         {
-            return Ok(await _service.GetNews());
+            return await _service.GetNews(queryDto);
         }
 
          
@@ -48,6 +49,22 @@ namespace OngProject.Controllers
         public async Task<ActionResult<GetNewsDetailsDto>> GetById(int id)
         {
             return await _service.GetNewsDetails(id);
+        }
+        
+        // ==================== Get By Id ==================== //
+        [HttpGet("{id}/comments")]
+        [Authorize]
+        #region Documentation
+        [SwaggerOperation(Summary = "Get comments for News details by id", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns the comments for News details")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(404, "NotFound. Entity id not found.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
+        public async Task<ActionResult<GetNewsDetailsCommentsDto>> GetByIdComments(int id)
+        {
+            return await _service.GetByIdComments(id);
         }
 
          

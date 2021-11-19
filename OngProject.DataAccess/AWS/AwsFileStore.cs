@@ -14,7 +14,7 @@ namespace OngProject.DataAccess.AWS
     public class AwsFileStore : IFileStore
     {
         private readonly AwsManageCredentials _aws;
-        public AwsFileStore(IOptionsMonitor<AwsManageCredentials>options)
+        public AwsFileStore(IOptionsMonitor<AwsManageCredentials> options)
         {
             _aws = options.CurrentValue;
         }
@@ -45,7 +45,8 @@ namespace OngProject.DataAccess.AWS
             
             return url;
         }
-         public async Task<string> EditFile(IFormFile image, string url)
+        
+        public async Task<string> EditFile(IFormFile image, string url)
         {
             await DeleteFile(url);
             return await SaveFile(image);

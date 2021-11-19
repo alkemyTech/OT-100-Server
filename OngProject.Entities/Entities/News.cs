@@ -1,4 +1,6 @@
-﻿namespace OngProject.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace OngProject.Domain.Entities
 {
     public class News : BaseEntity
     {
@@ -8,5 +10,6 @@
         public string Type { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Members;
-using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -30,9 +29,9 @@ namespace OngProject.Controllers
         [SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult<Pagination<GetMembersDto>>> GetAll([FromQuery] MemberQueryDto queryDto)
+        public async Task<ActionResult<List<GetMembersDto>>> GetAll()
         {
-            return await _service.GetMembers(queryDto);
+            return await _service.GetMembers();
         }
 
         [HttpGet("{id}")]
@@ -65,7 +64,7 @@ namespace OngProject.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User, Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Modifies an existing Member.", Description = ".")]
         [SwaggerResponse(204, "Updated. Returns nothing.")]
