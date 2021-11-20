@@ -16,8 +16,9 @@ namespace OngProject.Application.Services.Mail
         private readonly ISendGridClient _sendGridClient;
         private readonly ILogger _logger;
         private readonly MailConfiguration _mail;
+        private readonly ILoggerFactory loggerFactory;
 
-        public MailService(ISendGridClient sendGridClient, IOptionsMonitor<MailConfiguration> options)
+        public MailService(ISendGridClient sendGridClient, IOptionsMonitor<MailConfiguration> options, ILoggerFactory loggerFactory)
         {
             _sendGridClient = sendGridClient;
             _logger = loggerFactory.CreateLogger("logs");;
