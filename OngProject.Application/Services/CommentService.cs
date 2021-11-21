@@ -61,16 +61,5 @@ namespace OngProject.Application.Services
             await _unitOfWork.CompleteAsync();
 
         }
-
-        public async Task<int> CreateComment(CreateCommentDto commentDto)
-        {
-            var comment = _mapper.Map<Comment>(commentDto);
-
-            await _unitOfWork.Comments.Create(comment);
-            await _unitOfWork.CompleteAsync();
-
-            return comment.Id;
-        }
-
     }
 }
