@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using OngProject.Domain.Entities;
+using OngProject.Application.Interfaces.Identity;
 
 namespace OngProject.Application.Services
 {
@@ -14,11 +15,13 @@ namespace OngProject.Application.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ICurrentUserService _currentUserService;
 
-        public CommentService(IUnitOfWork unitOfWork, IMapper mapper)
+        public CommentService(IUnitOfWork unitOfWork, IMapper mapper, ICurrentUserService currentUserService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _currentUserService = currentUserService;
         }
 
         public async Task<List<GetCommentsDto>> GetComments()
@@ -42,11 +45,13 @@ namespace OngProject.Application.Services
 
         public async Task Update(int id, UpdateCommentDto updateComment)
         {
+            
             var comment = await _unitOfWork.Comments.GetById(id);
-
+            
             if (comment is null)
                 throw new NotFoundException(nameof(Comment), id);
 
+           
             await _unitOfWork.Comments.Update(_mapper.Map(updateComment, comment));
             await _unitOfWork.CompleteAsync();
         }
