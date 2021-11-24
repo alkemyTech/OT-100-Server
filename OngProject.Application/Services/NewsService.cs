@@ -5,7 +5,9 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.News;
 using OngProject.Application.Exceptions;
+using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Interfaces;
+using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
 
 namespace OngProject.Application.Services
@@ -23,12 +25,14 @@ namespace OngProject.Application.Services
             _fileStore = fileStore;
         }
         // ==================== Get All ==================== //
-        public async Task<IEnumerable<GetNewsDto>> GetNews()
+        public async Task<Pagination<GetNewsDto>> GetNews(NewsQueryDto queryDto)
         {
             var news = await _unitOfWork.News.GetAll();
+
             return news
                 .AsQueryable()
-                .ProjectTo<GetNewsDto>(_mapper.ConfigurationProvider);
+                .ProjectTo<GetNewsDto>(_mapper.ConfigurationProvider)
+                .PaginatedResponse(queryDto.PageNumber, queryDto.PageSize);
         }
 
         // ==================== Get By Id ==================== //

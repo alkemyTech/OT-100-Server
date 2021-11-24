@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OngProject.Application.DTOs.Mails;
 using OngProject.Application.Helpers.Mail;
 using OngProject.Application.Interfaces.Mail;
-using OngProject.Domain.Entities;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
@@ -16,7 +15,7 @@ namespace OngProject.Application.Services.Mail
         private readonly ISendGridClient _sendGridClient;
         private readonly ILogger _logger;
         private readonly MailConfiguration _mail;
-
+        
         public MailService(ISendGridClient sendGridClient, IOptionsMonitor<MailConfiguration> options, ILoggerFactory loggerFactory)
         {
             _sendGridClient = sendGridClient;

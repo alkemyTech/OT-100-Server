@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Contacts;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 
 namespace OngProject.Controllers

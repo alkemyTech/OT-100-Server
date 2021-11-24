@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OngProject.Application.Interfaces;
 using OngProject.Application.Interfaces.IRepositories;
 using OngProject.DataAccess.Context;
 using OngProject.Domain.Entities;
@@ -12,6 +14,7 @@ namespace OngProject.DataAccess.Repositories
 {
     public class CommentRepository : GenericRepository<Comment>, ICommentRepository
     {
+        
         public CommentRepository(ApplicationDbContext dbContext, ILogger logger) : base(dbContext, logger)
         {
         }
@@ -32,7 +35,7 @@ namespace OngProject.DataAccess.Repositories
             }
         }
 
-        public override async Task<Comment> GetById(int id)
+        public async Task<Comment> GetById(int id)
         {
             try
             {
@@ -47,5 +50,6 @@ namespace OngProject.DataAccess.Repositories
                 return new Comment();
             }
         }
+
     }
 }

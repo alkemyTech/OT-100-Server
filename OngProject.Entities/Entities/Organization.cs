@@ -1,4 +1,6 @@
-﻿namespace OngProject.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace OngProject.Domain.Entities
 {
     public class Organization : BaseEntity
     {
@@ -12,6 +14,8 @@
         public string InstagramUrl { get; set; }
         public string FacebookUrl { get; set; }
         public string LinkedInUrl { get; set; }
+
+        public List<Slide> Slides { get; set; }
 
     }
 }

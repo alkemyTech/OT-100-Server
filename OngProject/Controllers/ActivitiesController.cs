@@ -80,6 +80,7 @@ namespace OngProject.Controllers
         }
         
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         #region Documentation
         [SwaggerOperation(Summary = "Soft delete an existing Activity", Description = ".")]
         [SwaggerResponse(204, "Deleted. Returns nothing.")]

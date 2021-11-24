@@ -42,7 +42,7 @@ namespace OngProject.Application.Services
 
         public async Task<GetOrganizationPublicDto> GetByIdPublic(int id)
         {
-            var organization = await _unitOfWork.Organizations.GetById(id);
+            var organization = await _unitOfWork.Organizations.GetOrgByIdWithSlides(id);
 
             if (organization is null)// || organization.DeletedAt != null)
                 throw new NotFoundException(nameof(Organization), id);
