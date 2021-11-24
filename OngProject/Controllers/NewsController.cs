@@ -20,7 +20,7 @@ namespace OngProject.Controllers
             _service = service;
         }
 
-        // ==================== Get All ==================== //
+         
         [HttpGet]
         [AllowAnonymous]
         #region Documentation
@@ -35,7 +35,7 @@ namespace OngProject.Controllers
             return await _service.GetNews(queryDto);
         }
 
-        // ==================== Get By Id ==================== //
+         
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
@@ -67,7 +67,7 @@ namespace OngProject.Controllers
             return await _service.GetByIdComments(id);
         }
 
-        // ==================== Post News ==================== //
+         
         [HttpPost]
         [Authorize(Roles = "Admin")]
         #region Documentation
@@ -83,7 +83,7 @@ namespace OngProject.Controllers
             return await _service.CreateNews(newsDto);
         }
 
-        // ==================== Update News ==================== //
+         
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
@@ -102,7 +102,7 @@ namespace OngProject.Controllers
             return await _service.GetNewsDetails(id);
         }
 
-        // ==================== Soft Delete News ==================== //
+         
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
