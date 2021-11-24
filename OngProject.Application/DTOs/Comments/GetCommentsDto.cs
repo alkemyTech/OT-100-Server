@@ -7,7 +7,6 @@ namespace OngProject.Application.DTOs.Comments
     public class GetCommentsDto : IMapFrom<Comment>
     {
         public string Body { get; set; }
-        public DateTime? CreatedAt { get; set; }
 
     }
 }

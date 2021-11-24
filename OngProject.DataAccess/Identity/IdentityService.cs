@@ -124,6 +124,17 @@ namespace OngProject.DataAccess.Identity
             };
             return userDto;
         }
-        
+
+        public async Task<string> GetEmail(string id)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user is null)
+            {
+                throw new BadRequestException("The user no exist.");
+            }
+
+            return user.Email;
+        }
     }
 }
