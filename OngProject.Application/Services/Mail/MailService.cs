@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -19,6 +19,7 @@ namespace OngProject.Application.Services.Mail
         private readonly ILoggerFactory loggerFactory;
 
         public MailService(ISendGridClient sendGridClient, IOptionsMonitor<MailConfiguration> options, ILoggerFactory loggerFactory)
+      
         {
             _sendGridClient = sendGridClient;
             _logger = loggerFactory.CreateLogger("logs");;
