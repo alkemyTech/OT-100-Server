@@ -20,7 +20,7 @@ namespace OngProject.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         #region Documentation
         [SwaggerOperation(Summary = "List of all Comments", Description = "Requires admin privileges")]
         [SwaggerResponse(200, "Success", typeof(GetCommentsDto))]

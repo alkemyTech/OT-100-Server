@@ -12,5 +12,7 @@ namespace OngProject.Application.Interfaces.Identity
 
         Task<CurrentUserDto> Me();
 
+        Task<string> GetEmail(string id);
+
     }
 }

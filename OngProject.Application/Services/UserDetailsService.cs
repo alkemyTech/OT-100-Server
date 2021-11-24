@@ -8,6 +8,10 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.JsonPatch;
 using OngProject.Application.Exceptions;
 using OngProject.Application.Interfaces;
+using OngProject.Application.DTOs.Mails;
+using System.IO;
+using OngProject.Application.Interfaces.Mail;
+using OngProject.Application.Interfaces.Identity;
 
 namespace OngProject.Application.Services
 {
@@ -15,11 +19,15 @@ namespace OngProject.Application.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IIdentityService _identityService;
+        private readonly IMailService _mailService;
 
-        public UserDetailsService(IUnitOfWork unitOfWork, IMapper mapper)
+        public UserDetailsService(IUnitOfWork unitOfWork, IMapper mapper, IMailService mailService, IIdentityService identityService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _mailService = mailService;
+            _identityService = identityService;
         }
 
         public async Task<IEnumerable<GetUsersDetailsDto>> GetUsers()
@@ -58,11 +66,22 @@ namespace OngProject.Application.Services
 
         public async Task SoftDeleteUsers(int id)
         {
+
             var user = await _unitOfWork.UsersDetails.GetById(id);
+            var userEmail = await _identityService.GetEmail(user.IdentityId.ToString());
 
             if (user is null)
                 throw new NotFoundException(nameof(UserDetails), id);
 
+            var mail = new SendMailDto
+            {
+                Name = user.FirstName + user.LastName,
+                EmailTo = userEmail,
+                Subject = "Baja ONG Somos más.",
+                Text = await File.ReadAllTextAsync("./wwwroot/templates/plantilla_email_baja.html")
+            };
+
+            await _mailService.SendMail(mail);
             await _unitOfWork.UsersDetails.Delete(user);
             await _unitOfWork.CompleteAsync();
         }
