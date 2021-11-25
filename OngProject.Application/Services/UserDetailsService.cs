@@ -64,7 +64,7 @@ namespace OngProject.Application.Services
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task SoftDeleteUsers(int id)
+        public async Task HardDeleteUsers(int id)
         {
 
             var user = await _unitOfWork.UsersDetails.GetById(id);
@@ -82,9 +82,16 @@ namespace OngProject.Application.Services
             };
 
             await _mailService.SendMail(mail);
+
+            await _identityService.Delete(user.IdentityId.ToString());  
+
+            await _unitOfWork.UsersDetails.Delete(user);
+            await _unitOfWork.CompleteAsync();
+
             await _unitOfWork.UsersDetails.Delete(user);
             await _unitOfWork.CompleteAsync();
         }
+
     }
 
 }

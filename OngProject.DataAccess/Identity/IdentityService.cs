@@ -136,5 +136,12 @@ namespace OngProject.DataAccess.Identity
 
             return user.Email;
         }
+
+        public async Task Delete(string id)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+            await _userManager.DeleteAsync(user);
+
+        }
     }
 }

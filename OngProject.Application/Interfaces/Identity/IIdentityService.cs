@@ -14,5 +14,8 @@ namespace OngProject.Application.Interfaces.Identity
 
         Task<string> GetEmail(string id);
 
+        Task Delete(string id);
+
+
     }
 }
