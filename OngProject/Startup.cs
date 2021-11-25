@@ -1,4 +1,3 @@
-using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,8 +32,7 @@ namespace OngProject
             services.AddHttpContextAccessor();
 
             services.AddControllers(ops =>
-                    ops.Filters.Add<ApiExceptionFilterAttribute>())
-                .AddNewtonsoftJson();
+                    ops.Filters.Add<ApiExceptionFilterAttribute>()).AddNewtonsoftJson();
 
             services.AddSwaggerGen(c =>
             {

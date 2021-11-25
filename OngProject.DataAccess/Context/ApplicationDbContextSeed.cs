@@ -35,6 +35,7 @@ namespace OngProject.DataAccess.Context
         // Create Activity
         public static async Task SeedDefaultActivityAsync(ApplicationDbContext context)
         {
+            #region Activities
             if (!context.Activities.Any())
             {
                 context.Activities.Add(new Activity
@@ -99,6 +100,8 @@ namespace OngProject.DataAccess.Context
                     Image = "image.png"
                 });
             }
+            #endregion
+
             await context.SaveChangesAsync();
 
         }
