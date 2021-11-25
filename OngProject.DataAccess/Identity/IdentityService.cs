@@ -136,5 +136,18 @@ namespace OngProject.DataAccess.Identity
 
             return user.Email;
         }
+
+        public async Task<string> GetUserRol(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            var role = await _userManager.GetRolesAsync(user);
+
+            if (user is null)
+            {
+                throw new BadRequestException("The user no exist.");
+            }
+
+            return role.First();
+        }
     }
 }
