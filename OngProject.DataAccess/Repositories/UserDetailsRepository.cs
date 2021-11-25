@@ -47,5 +47,21 @@ namespace OngProject.DataAccess.Repositories
                 return new UserDetails();
             }
         }
+
+        public async Task<UserDetails> GetEmailByIdUser(int id)
+        {
+            try
+            {
+                return await DbContext.UsersDetails
+                    .AsNoTracking()
+                    .Where(m => m.DeletedAt == null)
+                    .FirstOrDefaultAsync(m => m.Id.Equals(id));
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, $"{typeof(UserDetailsRepository)} GetById method has generated an error");
+                return new UserDetails();
+            }
+        }
     }
 }

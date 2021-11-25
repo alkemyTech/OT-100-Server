@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using OngProject.Application.DTOs.Mails;
 using OngProject.Application.Helpers.Mail;
 using OngProject.Application.Interfaces.Mail;
+using OngProject.Domain.Entities;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
