@@ -9,12 +9,12 @@ namespace OngProject.DataAccess.Configurations
         public void Configure(EntityTypeBuilder<Slide> builder)
         {
             builder.HasKey(m => m.Id);
-            builder.Property(m => m.ImageUrl);
+            builder.Property(m => m.ImageUrl)
+                .IsRequired();
             builder.Property(m => m.Text)
                 .IsRequired()
                 .HasMaxLength(8000);
-            builder.Property(m => m.Order)
-                .IsRequired();
+            builder.Property(m => m.Order);
             builder.Property(m => m.CreatedAt)
                 .HasColumnType("SMALLDATETIME");
             builder.Property(m => m.UpdatedAt)
