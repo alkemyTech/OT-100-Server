@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using OngProject.Application.DTOs.UsersDetails;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
+using OngProject.Application.Interfaces.Identity;
 
 namespace OngProject.Controllers
 {
@@ -14,6 +17,7 @@ namespace OngProject.Controllers
     public class UsersDetailsController : ControllerBase
     {
         private readonly UserDetailsService _detailsService;
+
 
         public UsersDetailsController(UserDetailsService detailsService)
         {
@@ -29,9 +33,9 @@ namespace OngProject.Controllers
         [SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<List<GetUsersDetailsDto>>> GetAll()
         {
-            return Ok(await _detailsService.GetUsers());
+            return await _detailsService.GetUsers();
         }
         
         [HttpGet("{id}")]
@@ -78,8 +82,8 @@ namespace OngProject.Controllers
         #endregion
         public async Task<ActionResult> Delete(int id)
         {
-            await _detailsService.SoftDeleteUsers(id);
-
+            await _detailsService.HardDeleteUsers(id);
+    
             return NoContent();
         }
     }
