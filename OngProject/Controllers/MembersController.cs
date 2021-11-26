@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Members;
+using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -29,9 +30,9 @@ namespace OngProject.Controllers
         [SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult<List<GetMembersDto>>> GetAll()
+        public async Task<Pagination<GetMembersDto>> GetAll([FromQuery] MemberQueryDto queryDto)
         {
-            return await _service.GetMembers();
+            return await _service.GetMembers(queryDto);
         }
 
         [HttpGet("{id}")]
@@ -39,7 +40,6 @@ namespace OngProject.Controllers
         [SwaggerOperation(Summary = "Get member details by id.", Description = ".")]
         [SwaggerResponse(200, "Success. Returns the slide details.")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
-        //[SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(404, "NotFound. Entity id not found.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
@@ -70,7 +70,6 @@ namespace OngProject.Controllers
         [SwaggerResponse(204, "Updated. Returns nothing.")]
         [SwaggerResponse(400, "BadRequest. Something went wrong, try again.")]
         [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
-        //[SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(404, "NotFound. Entity id not found.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion

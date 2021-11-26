@@ -1,22 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\**" />
-    <EmbeddedResource Remove="Migrations\**" />
-    <None Remove="Migrations\**" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Migrations\20211120012241_Sprint4.cs" />
-    <Compile Include="Migrations\20211120012241_Sprint4.Designer.cs" />
-    <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\OngProject.Application\OngProject.Application.csproj" />
     <ProjectReference Include="..\OngProject.Entities\OngProject.Domain.csproj" />
   </ItemGroup>

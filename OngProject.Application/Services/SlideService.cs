@@ -14,11 +14,13 @@ namespace OngProject.Application.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IFileStore _fileStore;
 
-        public SlideService(IUnitOfWork unitOfWork, IMapper mapper)
+        public SlideService(IUnitOfWork unitOfWork, IMapper mapper, IFileStore fileStore)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _fileStore = fileStore;
         }
 
         public async Task<GetSlideDetailsDto> GetSlideDetailsDto(int id)
@@ -29,6 +31,25 @@ namespace OngProject.Application.Services
                 throw new NotFoundException(nameof(Slide), id);
 
             return _mapper.Map<GetSlideDetailsDto>(slide);
+        }
+
+        public async Task<int> CreateSlide(CreateSlideDto slideDto)
+        {
+            if (slideDto.Order == null)
+            {
+                var slideList = await _unitOfWork.Slides.GetAll();
+                var lastSlide = slideList.Last();
+                slideDto.Order = lastSlide.Order + 1;
+            }
+
+            var url = await _fileStore.SaveFile(slideDto.ImageUrl);
+            var slide = _mapper.Map<Slide>(slideDto);
+            slide.ImageUrl = url;
+
+            await _unitOfWork.Slides.Create(slide);
+            await _unitOfWork.CompleteAsync();
+
+            return slide.Id;
         }
 
         public async Task UpdateSlide(int id, UpdateSlideDto slideDto)

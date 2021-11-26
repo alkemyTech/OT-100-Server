@@ -148,6 +148,12 @@ namespace OngProject.DataAccess.Identity
             }
 
             return role.First();
+
+        public async Task Delete(string id)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+            await _userManager.DeleteAsync(user);
+
         }
     }
 }

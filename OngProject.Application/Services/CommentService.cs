@@ -10,6 +10,7 @@ using OngProject.Domain.Entities;
 using OngProject.Application.Interfaces.Identity;
 using System;
 
+
 namespace OngProject.Application.Services
 {
     public class CommentService
@@ -17,6 +18,7 @@ namespace OngProject.Application.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ICurrentUserService _currentUserService;
+
         private readonly IIdentityService _identityService;
 
         public CommentService(IUnitOfWork unitOfWork, IMapper mapper, ICurrentUserService currentUserService, IIdentityService identityService)
@@ -24,6 +26,7 @@ namespace OngProject.Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _currentUserService = currentUserService;
+
             _identityService = identityService;
         }
 
@@ -48,17 +51,16 @@ namespace OngProject.Application.Services
 
         public async Task Update(int id, UpdateCommentDto updateComment)
         {
-
             var comment = await _unitOfWork.Comments.GetById(id);
-
+            
             if (comment is null)
                 throw new NotFoundException(nameof(Comment), id);
+
 
             var user = await _unitOfWork.UsersDetails.GetById(comment.UserDetailsId);
 
             if (user.IdentityId != new Guid(_currentUserService.userId))
                 throw new BadRequestException("You do not have permission to modify.");
-
 
             await _unitOfWork.Comments.Update(_mapper.Map(updateComment, comment));
             await _unitOfWork.CompleteAsync();

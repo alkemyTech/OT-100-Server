@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Members;
 using OngProject.Application.Exceptions;
+using OngProject.Application.Helpers.Wrappers;
 using OngProject.Application.Interfaces;
 using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
@@ -21,13 +23,14 @@ namespace OngProject.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<List<GetMembersDto>> GetMembers()
+        public async Task<Pagination<GetMembersDto>> GetMembers(MemberQueryDto queryDto)
         {
             var members = await _unitOfWork.Members.GetAll();
             
             return members
                 .AsQueryable()
-                .ProjectToList<GetMembersDto>(_mapper.ConfigurationProvider);
+                .ProjectTo<GetMembersDto>(_mapper.ConfigurationProvider)
+                .PaginatedResponse(queryDto.PageNumber, queryDto.PageSize);
         }
 
         public async Task<GetMembersDto> GetMemberDetails(int id)

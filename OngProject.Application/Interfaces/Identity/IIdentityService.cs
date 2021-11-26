@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using OngProject.Application.DTOs;
 using OngProject.Application.DTOs.Identity;
 
@@ -16,5 +16,6 @@ namespace OngProject.Application.Interfaces.Identity
 
         Task<string> GetUserRol(string id);
 
+        Task Delete(string id);
     }
 }

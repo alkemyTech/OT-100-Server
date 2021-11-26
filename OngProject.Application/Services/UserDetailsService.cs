@@ -64,15 +64,15 @@ namespace OngProject.Application.Services
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task SoftDeleteUsers(int id)
+        public async Task HardDeleteUsers(int id)
         {
 
             var user = await _unitOfWork.UsersDetails.GetById(id);
-            var userEmail = await _identityService.GetEmail(user.IdentityId.ToString());
-
             if (user is null)
                 throw new NotFoundException(nameof(UserDetails), id);
-
+          
+            var userEmail = await _identityService.GetEmail(user.IdentityId.ToString());
+          
             var mail = new SendMailDto
             {
                 Name = user.FirstName + user.LastName,
@@ -82,9 +82,14 @@ namespace OngProject.Application.Services
             };
 
             await _mailService.SendMail(mail);
+
+            await _identityService.Delete(user.IdentityId.ToString());  
+
             await _unitOfWork.UsersDetails.Delete(user);
             await _unitOfWork.CompleteAsync();
+
         }
+
     }
 
 }
