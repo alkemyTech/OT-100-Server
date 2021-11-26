@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using FluentAssertions;
 using Moq;
 using OngProject.Application.DTOs.Members;
 using OngProject.Application.Exceptions;
@@ -41,15 +42,17 @@ namespace UnitTests
                 new() {Id = 2, Name = "B", Image = "image.png"},
                 new() {Id = 3, Name = "C", Image = "image.png"}
             };
+
+            var pagination = new MemberQueryDto {PageNumber = 1, PageSize = 10};
             
             _unitOfWork.Setup(u => u.Members.GetAll()).ReturnsAsync(members);
 
             // Act
-            var result = await Controller.GetAll();
+            var result = await Controller.GetAll(pagination);
 
             // Assert
-            Assert.IsType<List<GetMembersDto>>(result.Value);
-            Assert.Equal(members.Count, result.Value.Count);
+            Assert.IsType<List<GetMembersDto>>(result.Items);
+            Assert.Equal(members.Count, result.Items.Count);
         }
         #endregion
 
@@ -61,23 +64,21 @@ namespace UnitTests
             var members = new List<Member>
             {
                 new() {Id = 1, Name = "A", Image = "Image.png"},
-                new() {Id = 2, Name = "B", Image = "Image.png"},
-                new() {Id = 3, Name = "C", Image = "Image.png"}
+                new() {Id = 2, Name = "B", Image = "Image.png"}
             };
 
             const int id = 2;
 
             _unitOfWork.Setup(u => u.Members.GetById(id))
-                .ReturnsAsync(members.Single(m => m.Id == id));
+                .ReturnsAsync(members.SingleOrDefault(m => m.Id == id));
 
             // Act
             var result = await Controller.GetById(id);
 
             // Assert
             Assert.IsType<GetMembersDto>(result.Value);
-            Assert.Equal(result.Value.Id, members.Single(e => e.Id == id).Id);
-            Assert.Equal(result.Value.Name, members.Single(e => e.Id == id).Name);
-            Assert.Equal(result.Value.Image, members.Single(e => e.Id == id).Image);
+            result.Value.Should().BeEquivalentTo(members.Single(e => e.Id == id), options =>
+                options.ComparingByMembers<GetMembersDto>().ExcludingMissingMembers());
         }
 
         [Fact]
@@ -132,16 +133,15 @@ namespace UnitTests
             var members = new List<Member>
             {
                 new() {Id = 1, Name = "A", Image = "Image.png"},
-                new() {Id = 2, Name = "B", Image = "Image.png"},
-                new() {Id = 3, Name = "C", Image = "Image.png"}
+                new() {Id = 2, Name = "B", Image = "Image.png"}
             };
 
             var memberDto = new CreateMemberDto {Name = "Updated", Image = "NewImage.png"};
 
             _unitOfWork.Setup(u => u.Members.GetById(idToUpdate))
-                .ReturnsAsync(members.Single(m => m.Id == idToUpdate));
+                .ReturnsAsync(members.SingleOrDefault(m => m.Id == idToUpdate));
 
-            _unitOfWork.Setup(u => u.Members.Update(It.IsAny<Member>()));
+            _unitOfWork.Setup(u => u.Members.Update(It.IsAny<Member>())).Verifiable("Updated");
             _unitOfWork.Setup(u => u.CompleteAsync()).Verifiable("Completed");
 
             // Act
@@ -150,6 +150,7 @@ namespace UnitTests
             // Assert
             _unitOfWork.Verify(u => u.Members.Update(It.Is<Member>(m =>
                  m.Id == idToUpdate && m.Name == memberDto.Name && m.Image == memberDto.Image)), Times.Once);
+            
         }
 
         [Fact]
@@ -187,11 +188,10 @@ namespace UnitTests
             const int idToDelete = 3;
 
             _unitOfWork.Setup(u => u.Members.GetById(idToDelete))
-                .ReturnsAsync(members.Single(m => m.Id == idToDelete));
+                .ReturnsAsync(members.SingleOrDefault(m => m.Id == idToDelete));
             
             _unitOfWork.Setup(u => u.Members.Delete(It.IsAny<Member>()))
                 .Callback<Member>(entity => members.Remove(entity));
-            
             _unitOfWork.Setup(s => s.CompleteAsync()).Verifiable("Completed");
             
             // Act
@@ -217,6 +217,7 @@ namespace UnitTests
 
             _unitOfWork.Setup(u => u.Members.Delete(It.IsAny<Member>()))
                 .Callback<Member>(m => members.Remove(m));
+            _unitOfWork.Setup(u => u.CompleteAsync()).Verifiable("Complete");
 
             // Act
 
