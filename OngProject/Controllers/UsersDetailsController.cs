@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Security.Principal;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using OngProject.Application.DTOs.UsersDetails;
@@ -6,6 +7,7 @@ using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
+using OngProject.Application.Interfaces.Identity;
 
 namespace OngProject.Controllers
 {
@@ -15,6 +17,7 @@ namespace OngProject.Controllers
     public class UsersDetailsController : ControllerBase
     {
         private readonly UserDetailsService _detailsService;
+
 
         public UsersDetailsController(UserDetailsService detailsService)
         {
@@ -79,8 +82,8 @@ namespace OngProject.Controllers
         #endregion
         public async Task<ActionResult> Delete(int id)
         {
-            await _detailsService.SoftDeleteUsers(id);
-
+            await _detailsService.HardDeleteUsers(id);
+    
             return NoContent();
         }
     }

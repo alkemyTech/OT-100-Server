@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Slides;
 using OngProject.Application.Services;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OngProject.Controllers
 {
@@ -20,7 +20,21 @@ namespace OngProject.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "List of all Slides", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Success. Returns a list of existing Slides")]
+        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
+        [SwaggerResponse(403, "Unauthorized user")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
+        public async Task<ActionResult<List<GetSlidesDto>>> GetAll()
+        {
+            return await _service.GetSlides();
+        }
 
+        
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         #region Documentation
@@ -35,6 +49,23 @@ namespace OngProject.Controllers
         {
             return await _service.GetSlideDetailsDto(id);
         }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        #region Documentation
+        [SwaggerOperation(Summary = "Create Slides", Description = "Requires admin privileges")]
+        [SwaggerResponse(200, "Created. Returns the id of the created object.")]
+        [SwaggerResponse(400, "BadRequest. Object not created, try again.")]
+        [SwaggerResponse(401, "Unauthenticated or wrong jwt token.")]
+        [SwaggerResponse(403, "Unauthorized user.")]
+        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
+        #endregion
+        public async Task<ActionResult<int>> Create([FromForm] CreateSlideDto slideDto)
+        {
+            return await _service.CreateSlide(slideDto);
+        }
+
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
@@ -54,19 +85,6 @@ namespace OngProject.Controllers
             return NoContent();
         }
 
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        #region Documentation
-        [SwaggerOperation(Summary = "List of all Slides", Description = "Requires admin privileges")]
-        [SwaggerResponse(200, "Success. Returns a list of existing Slides")]
-        [SwaggerResponse(401, "Unauthenticated user or wrong jwt token")]
-        [SwaggerResponse(403, "Unauthorized user")]
-        [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
-        #endregion
-        public async Task<ActionResult<List<GetSlidesDto>>> GetAll()
-        {
-            return await _service.GetSlides();
-        }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
