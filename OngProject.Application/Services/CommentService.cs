@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OngProject.Application.DTOs.Comments;
 using OngProject.Application.Exceptions;
@@ -57,7 +57,7 @@ namespace OngProject.Application.Services
             var user = await _unitOfWork.UsersDetails.GetById(comment.UserDetailsId);
 
             if (user.IdentityId != new Guid(_currentUserService.userId))
-                throw new BadRequestException("403 - You do not have permission to modify.");
+                throw new BadRequestException("You do not have permission to modify.");
 
 
             await _unitOfWork.Comments.Update(_mapper.Map(updateComment, comment));
@@ -75,7 +75,7 @@ namespace OngProject.Application.Services
             var role = await _identityService.GetUserRol(_currentUserService.userId);
 
             if (user.IdentityId != new Guid(_currentUserService.userId) || role =="Admin")
-                throw new BadRequestException("403 - You do not have permission to delete.");
+                throw new BadRequestException("You do not have permission to delete.");
 
             await _unitOfWork.Comments.Delete(comment);
             await _unitOfWork.CompleteAsync();
