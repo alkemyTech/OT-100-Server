@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+using System.Collections.Generic;
+using System.Security.Principal;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using OngProject.Application.DTOs.UsersDetails;
@@ -32,9 +33,9 @@ namespace OngProject.Controllers
         [SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<List<GetUsersDetailsDto>>> GetAll()
         {
-            return Ok(await _detailsService.GetUsers());
+            return await _detailsService.GetUsers();
         }
         
         [HttpGet("{id}")]

@@ -15,7 +15,7 @@ namespace OngProject.DataAccess.Context
         {
         }
         
-        public DbSet<Member> Members { get; set; }
+        public virtual DbSet<Member> Members { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<News> News { get; set; }

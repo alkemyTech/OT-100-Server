@@ -1,6 +1,5 @@
 ﻿using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
-using System;
 
 namespace OngProject.Application.DTOs.Comments
 {
