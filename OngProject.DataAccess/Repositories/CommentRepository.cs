@@ -35,7 +35,7 @@ namespace OngProject.DataAccess.Repositories
             }
         }
 
-        public async Task<Comment> GetById(int id)
+        public override async Task<Comment> GetById(int id)
         {
             try
             {

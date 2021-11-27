@@ -91,8 +91,9 @@ namespace OngProject.Filters
         }
         
         // StatusCode = 403
-        private void HandleForbiddenAccessException(ExceptionContext context)
+        private static void HandleForbiddenAccessException(ExceptionContext context)
         {
+            context.HttpContext.Response.ContentType = "application/json";
             var details = new ProblemDetails
             {
                 Title = "Forbidden",
