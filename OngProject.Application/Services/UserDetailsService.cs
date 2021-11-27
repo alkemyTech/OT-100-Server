@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using OngProject.Application.DTOs.UsersDetails;
 using OngProject.Domain.Entities;
 using System.Collections.Generic;
@@ -68,7 +68,7 @@ namespace OngProject.Application.Services
         public async Task HardDeleteUsers(int id)
         {
             var user = await _unitOfWork.UsersDetails.GetById(id);
-            
+
             if (user is null)
                 throw new NotFoundException(nameof(UserDetails), id);
             
@@ -89,8 +89,6 @@ namespace OngProject.Application.Services
             await _unitOfWork.UsersDetails.Delete(user);
             await _unitOfWork.CompleteAsync();
 
-            await _unitOfWork.UsersDetails.Delete(user);
-            await _unitOfWork.CompleteAsync();
         }
 
     }
