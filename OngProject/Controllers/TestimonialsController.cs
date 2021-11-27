@@ -25,7 +25,6 @@ namespace OngProject.Controllers
         [SwaggerOperation(Summary = "List of all Testimonials.", Description = ".")]
         [SwaggerResponse(200, "Success. Returns a list of existing Slides.")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
-        //[SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
         public async Task<ActionResult<Pagination<GetTestimonialsDto>>> GetAll([FromQuery] TestimonialsQueryDto queryDto)
@@ -38,7 +37,6 @@ namespace OngProject.Controllers
         [SwaggerOperation(Summary = "Get testimony details by id.", Description = ".")]
         [SwaggerResponse(200, "Success. Returns the slide details.")]
         [SwaggerResponse(401, "Unauthenticated user or wrong jwt token.")]
-        //[SwaggerResponse(403, "Unauthorized user.")]
         [SwaggerResponse(404, "NotFound. Entity id not found.")]
         [SwaggerResponse(500, "Internal server error. An error occurred while processing your request.")]
         #endregion
