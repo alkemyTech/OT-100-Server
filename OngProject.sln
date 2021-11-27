@@ -5,15 +5,15 @@ VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OngProject", "OngProject\OngProject.csproj", "{4F43CE39-A0A2-4130-83A2-EFDC4AEB669E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OngProject.Domain", "OngProject.Entities\OngProject.Domain.csproj", "{8EF5BE28-66AE-47F0-9F1C-5E4955A97A9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OngProject.Domain", "OngProject.Entities\OngProject.Domain.csproj", "{8EF5BE28-66AE-47F0-9F1C-5E4955A97A9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OngProject.DataAccess", "OngProject.DataAccess\OngProject.DataAccess.csproj", "{7F99459E-B4E4-4E0C-8C36-49B9913302D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OngProject.DataAccess", "OngProject.DataAccess\OngProject.DataAccess.csproj", "{7F99459E-B4E4-4E0C-8C36-49B9913302D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OngProject.Application", "OngProject.Application\OngProject.Application.csproj", "{0D896C5C-8113-4698-81A2-2AD3BB211294}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OngProject.Application", "OngProject.Application\OngProject.Application.csproj", "{0D896C5C-8113-4698-81A2-2AD3BB211294}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D9AE7472-76DB-45E5-9E16-BF9B5D042796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{188806B7-49C9-4D75-95F6-94AA57A40DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{188806B7-49C9-4D75-95F6-94AA57A40DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,10 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6D98DB81-7946-4A80-84D4-C2BD55E99DE3}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{188806B7-49C9-4D75-95F6-94AA57A40DA6} = {D9AE7472-76DB-45E5-9E16-BF9B5D042796}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D98DB81-7946-4A80-84D4-C2BD55E99DE3}
 	EndGlobalSection
 EndGlobal
