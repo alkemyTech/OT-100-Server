@@ -7,6 +7,7 @@ using OngProject.Application.DTOs.Contacts;
 using OngProject.Application.DTOs.Mails;
 using OngProject.Application.Interfaces;
 using OngProject.Application.Interfaces.Mail;
+using OngProject.Application.Mappings;
 using OngProject.Domain.Entities;
 
 
@@ -27,10 +28,10 @@ namespace OngProject.Application.Services
 
         public async Task<IEnumerable<GetContactsDto>> GetAll()
         {
-            var categories = await _unitOfWork.Contacts.GetAll();
-            return categories
+            var contacts = await _unitOfWork.Contacts.GetAll();
+            return contacts
                 .AsQueryable()
-                .ProjectTo<GetContactsDto>(_mapper.ConfigurationProvider);
+                .ProjectToList<GetContactsDto>(_mapper.ConfigurationProvider);
         }
 
 

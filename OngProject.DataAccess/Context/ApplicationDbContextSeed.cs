@@ -21,20 +21,41 @@ namespace OngProject.DataAccess.Context
             
             if(await roleManager.Roles.AllAsync(r => r.Name != userRole.Name))
                 await roleManager.CreateAsync(userRole);
-            
-            // Create Admin
-            var admin = new ApplicationUser {UserName = "admin@localhost", Email = "admin@localhost"};
 
-            if (await userManager.Users.AllAsync(u => u.UserName != admin.UserName))
+            // Create Admins
+            #region Admin
+            int qttyAdmins = 10;
+            for (int i = 0; i < qttyAdmins; i++)
             {
-                await userManager.CreateAsync(admin, "Abc123.");
-                await userManager.AddToRoleAsync(admin, adminRole.Name);
+                var admin = new ApplicationUser { UserName = $"admin{i}@localhost", Email = $"admin{i}@localhost" };
+                if (await userManager.Users.AllAsync(u => u.UserName != admin.UserName))
+                {
+                    await userManager.CreateAsync(admin, "Abc123.");
+                    await userManager.AddToRoleAsync(admin, adminRole.Name);
+                }
             }
+            #endregion
+
+            // Create Users
+            #region User
+            int qttyUsers = 10;
+            for (int i = 0; i < qttyUsers; i++)
+            {
+                var user = new ApplicationUser { UserName = $"user{i}@localhost", Email = $"user{i}@localhost" };
+                if (await userManager.Users.AllAsync(u => u.UserName != user.UserName))
+                {
+                    await userManager.CreateAsync(user, "123Abc.");
+                    await userManager.AddToRoleAsync(user, userRole.Name);
+                }
+            }
+            #endregion
+  
         }
-        
+
         // Create Activity
         public static async Task SeedDefaultActivityAsync(ApplicationDbContext context)
         {
+            #region Activities
             if (!context.Activities.Any())
             {
                 context.Activities.Add(new Activity
@@ -99,6 +120,8 @@ namespace OngProject.DataAccess.Context
                     Image = "image.png"
                 });
             }
+            #endregion
+
             await context.SaveChangesAsync();
 
         }

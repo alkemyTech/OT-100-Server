@@ -23,7 +23,7 @@ namespace OngProject.Application
             services.AddScoped<UserDetailsService>();
             services.AddScoped<TestimonyService>();
             services.AddScoped<SlideService>();
-            services.AddScoped<ContactService>();
+            services.AddScoped<ActivityService>();
 
             #region MailService
             services.Configure<MailConfiguration>(configuration.GetSection("MailConfiguration"));

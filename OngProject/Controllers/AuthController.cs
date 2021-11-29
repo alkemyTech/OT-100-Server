@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OngProject.Application.DTOs.Identity;
 using OngProject.Application.Interfaces.Identity;
 using Swashbuckle.AspNetCore.Annotations;
 using OngProject.Application.DTOs;
+using OngProject.Application.Exceptions;
 
 namespace OngProject.Controllers
 {
@@ -56,7 +58,5 @@ namespace OngProject.Controllers
             
            return await _identityService.Me();
         }
-
-
     }
 }

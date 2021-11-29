@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using OngProject.Application.DTOs.UsersDetails;
 using OngProject.Domain.Entities;
 using System.Collections.Generic;
@@ -12,6 +12,7 @@ using OngProject.Application.DTOs.Mails;
 using System.IO;
 using OngProject.Application.Interfaces.Mail;
 using OngProject.Application.Interfaces.Identity;
+using OngProject.Application.Mappings;
 
 namespace OngProject.Application.Services
 {
@@ -30,13 +31,13 @@ namespace OngProject.Application.Services
             _identityService = identityService;
         }
 
-        public async Task<IEnumerable<GetUsersDetailsDto>> GetUsers()
+        public async Task<List<GetUsersDetailsDto>> GetUsers()
         {
             var users = await _unitOfWork.UsersDetails.GetAll();
 
             return users
                 .AsQueryable()
-                .ProjectTo<GetUsersDetailsDto>(_mapper.ConfigurationProvider);
+                .ProjectToList<GetUsersDetailsDto>(_mapper.ConfigurationProvider);
         }
 
         public async Task<GetUserDetailsDto> GetUserDetails(int id)
@@ -64,15 +65,15 @@ namespace OngProject.Application.Services
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task SoftDeleteUsers(int id)
+        public async Task HardDeleteUsers(int id)
         {
-
             var user = await _unitOfWork.UsersDetails.GetById(id);
-            var userEmail = await _identityService.GetEmail(user.IdentityId.ToString());
 
             if (user is null)
                 throw new NotFoundException(nameof(UserDetails), id);
-
+            
+            var userEmail = await _identityService.GetEmail(user.IdentityId.ToString());
+            
             var mail = new SendMailDto
             {
                 Name = user.FirstName + user.LastName,
@@ -82,9 +83,14 @@ namespace OngProject.Application.Services
             };
 
             await _mailService.SendMail(mail);
+
+            await _identityService.Delete(user.IdentityId.ToString());  
+
             await _unitOfWork.UsersDetails.Delete(user);
             await _unitOfWork.CompleteAsync();
+
         }
+
     }
 
 }
