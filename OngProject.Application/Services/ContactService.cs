@@ -34,6 +34,7 @@ namespace OngProject.Application.Services
                 .ProjectToList<GetContactsDto>(_mapper.ConfigurationProvider);
         }
 
+
         public async Task<int> CreateContact(CreateContactDto contactDto)
         {
             var contact = _mapper.Map<Contact>(contactDto);
